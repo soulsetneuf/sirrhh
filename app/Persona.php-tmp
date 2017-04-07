@@ -1,0 +1,10 @@
+<?php
+
+namespace sisRRHH;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Persona extends Model {
+	protected $table    = "personas";
+	protected $fillable = ["nombre", "apellido_p", "CI"];
+}

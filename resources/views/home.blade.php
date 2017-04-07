@@ -1,0 +1,26 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                @if(session()->has('msj'))
+				<div class="alert alert-success" role="alert">
+				{{ session('msj') }}
+				</div>
+				@endif
+				@if(session()->has('errormsj'))
+				<div class="alert alert-danger" role="alert">
+				Error al guardar los Datos.
+				</div>
+				@endif
+                    @include('layouts.listafuncionario') 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

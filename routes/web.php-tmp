@@ -1,0 +1,55 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
+|
+ */
+Route::get('/', function () {
+		return view('welcome');
+	});
+
+Auth::routes();//login,register
+
+Route::get('/home', 'HomeController@index');
+
+Route::resource('/funcionarios', 'funcionarios');
+
+Route::resource('/contratos', 'contratos');//create,edit,
+
+Route::get('/contratos/{id_dat}/{nombre}/{ci}', 'contratos@create');
+
+/*
+Route::get("mi_ruta",function ()
+{
+return view('welcome');
+}
+);
+
+Route::group(['prefix' => 'rrhh'], function () {
+Route::resource('/funcionarios','funcionarios');
+
+});
+Route::group(['prefix' => 'administrativa'], function () {
+Route::resource('/contratos','contratos');
+});
+
+Route::get('/', function () {
+return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::resource('/funcionarios','funcionarios');
+
+Route::resource('/contratos','contratos');
+
+Route::get('/contratos/{id_dat}/{nombre}/{ci}', 'contratos@create');
+ */
