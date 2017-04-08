@@ -21,10 +21,6 @@
 
                         @include($ruta_vista.'.form')
 
-                        <center>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </center><br>
-
                         {!! Form::close() !!}
 
                     </div>

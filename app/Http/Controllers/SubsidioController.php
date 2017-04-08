@@ -20,15 +20,27 @@ class SubsidioController extends Controller
         $tipo_subsidio=$request->get("tipo_subsidio");
         if (!(is_null($tipo_subsidio)))
         {
-            $query=Subsidio::tiposubsidio($tipo_subsidio);
             return \View::make($this->ruta_vista.'.list',
-                ["values"=>$query->get(),"total"=>$query->sum('monto'),"numero_funcionarios"=>$query->count(),"ruta_controlador"=>$this->ruta_controlador]);
+                [
+                    "values"=>Subsidio::tiposubsidio($tipo_subsidio)->get(),
+                    "total"=>Subsidio::tiposubsidio($tipo_subsidio)->sum('monto'),
+                    "total_lactancia"=>Subsidio::tiposubsidio($tipo_subsidio)->where("tipo_subsidio","=", "Lactancia")->sum('monto'),
+                    "total_prenatal"=>Subsidio::tiposubsidio($tipo_subsidio)->where("tipo_subsidio","=", "Prenatal")->sum('monto'),
+                    "numero_funcionarios"=>Subsidio::tiposubsidio($tipo_subsidio)->count(),
+                    "ruta_controlador"=>$this->ruta_controlador
+                ]);
         }
         else
         {
             $query=Subsidio::all();
             return \View::make($this->ruta_vista.'.list',
-                ["values"=>$query,"total"=>$query->sum('monto'),"numero_funcionarios"=>$query->count(),"ruta_controlador"=>$this->ruta_controlador]);
+                [
+                    "values"=>Subsidio::all(),
+                    "total"=>Subsidio::sum('monto'),
+                    "total_prenatal"=>Subsidio::where("tipo_subsidio","=", "Prenatal")->sum('monto'),
+                    "total_lactancia"=>Subsidio::where("tipo_subsidio","=","Lactancia")->sum('monto'),
+                    "numero_funcionarios"=>Subsidio::count(),
+                    "ruta_controlador"=>$this->ruta_controlador]);
         }
     }
     public function report(Request $request)

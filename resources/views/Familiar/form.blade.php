@@ -26,8 +26,8 @@
 							{!! Form::select('tipo_parentesco',config('options.tipo_parentesco'),null,['class' => 'form-control' , 'required' => 'required']) !!}
 						</div>
 					</div>
-
-				</div>				  
+				</div>
+                @include("Boton.boton")
 		</div>
 
 	</div>

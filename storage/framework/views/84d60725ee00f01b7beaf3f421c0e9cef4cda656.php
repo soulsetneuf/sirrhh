@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
             	<div class="panel-body">
             		<div class="col-lg-12">
@@ -25,11 +25,19 @@
                     </table>
                     <?php echo Form::close(); ?>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         Numero de funcionarios : <?php echo e($numero_funcionarios); ?>
 
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
+                        Total Prenatal : <?php echo e($total_prenatal); ?>
+
+                    </div>
+                    <div class="col-lg-3">
+                        Total Lactancia : <?php echo e($total_lactancia); ?>
+
+                    </div>
+                    <div class="col-lg-3">
                         Total : <?php echo e($total); ?>
 
                     </div>
@@ -47,8 +55,37 @@
             						<?php $__currentLoopData = $values; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
             						<tr class="success">
             							<td><?php echo e($value->id); ?></td>
-                                        <td><?php echo e($value->funcionario->ci); ?></td>
-            							<td><?php echo e($value->familiar->persona->nombre); ?></td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">Nombre: </label><?php echo e($value->funcionario->nom_com); ?>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">CI: </label><?php echo e($value->funcionario->ci); ?>
+
+                                                </div>
+                                            </div>
+                                        </td>
+            							<td>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">Nombre: </label><?php echo e($value->familiar->persona->nombre); ?> <?php echo e(" ".$value->familiar->persona->apellido_paterno); ?> <?php echo e(" ".$value->familiar->persona->apellido_materno); ?>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">CI: </label><?php echo e($value->familiar->persona->ci); ?>
+
+                                                </div>
+                                            </div>
+                                            <?php echo e($value->familiar->persona->nombre); ?>
+
+
+                                        </td>
                                         <td><?php echo e($value->tipo_subsidio); ?></td>
                                         <td><?php echo e($value->monto); ?></td>
             							<td>

@@ -14,6 +14,7 @@ class PlanillaDeSubsidio extends Model
                 ,"mes"
                 ,"beneficiarios"
                 ,"monto_total"
+                ,"ubicacion_fisica"
                 ,"descripcion"];
     public function setPathAttribute($path){
 		$name = Carbon::now()->second.$path->getClientOriginalName();

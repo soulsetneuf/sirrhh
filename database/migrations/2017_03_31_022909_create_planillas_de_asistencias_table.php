@@ -20,6 +20,7 @@ class CreatePlanillasDeAsistenciasTable extends Migration
                 $table->integer("gestion");
                 $table->string("mes");
                 $table->integer("total_personal");
+                $table->integer("ubicacion_fisica");
                 $table->string("descripcion");
                 $table->timestamps();//created_at, updated_at
             });

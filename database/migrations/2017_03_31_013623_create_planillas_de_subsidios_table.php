@@ -22,6 +22,7 @@ class CreatePlanillasDeSubsidiosTable extends Migration
                 $table->integer("beneficiarios");
                 $table->integer("monto_total");
                 $table->string("descripcion");
+            $table->string("ubicacion_fisica");
                 $table->timestamps();//created_at, updated_at
             });
     }

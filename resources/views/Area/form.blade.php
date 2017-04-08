@@ -12,7 +12,8 @@
 					  {!! Form::label('Nombre', 'Nombre') !!}
                       {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
 					</div>
-				</div>				  
+				</div>
+                @include("Boton.boton")
 		</div>
 
 	</div>

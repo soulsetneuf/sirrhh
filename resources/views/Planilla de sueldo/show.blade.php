@@ -22,7 +22,7 @@
 								
 							<div class="col-lg-12">
 								<hr>
-								<h2 class="intro-text text-center">Planilla de subsidios</h2>
+								<h2 class="intro-text text-center">Planilla de sueldos</h2>
 								<hr>
 							</div>
 							<div class="form-group">
@@ -62,10 +62,17 @@
 											{!! Form::label($value->gestion) !!}
 										</div>
 									</div>
-
-								
-
-								</div>				  
+								</div>
+                                <div class="form-group">
+                                    <div class="col-lg-2">
+                                        {!! link_to_route($ruta_controlador.'.index',$title="Atras",$parameters="", $attributes=["class"=>"btn btn-default"])  !!}
+                                    </div>
+                                    <div class="col-lg-6">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        {!! link_to_route($ruta_controlador.'.edit',$title="Modificar",$parameters=$value->id, $attributes=["class"=>"btn btn-warning"])  !!}
+                                    </div>
+                                </div>
 							</div>
 
 						</div>

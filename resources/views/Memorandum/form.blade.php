@@ -81,7 +81,8 @@
 					
 					</div>
 
-				</div>				  
+				</div>
+                @include("Boton.boton")
 		</div>
 
 	</div>

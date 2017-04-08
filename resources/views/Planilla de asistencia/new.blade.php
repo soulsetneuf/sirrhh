@@ -16,22 +16,10 @@
 				Error al guardar los Datos.
 				</div>
 				@endif
-
-				@include('Error.error')	
-
+				@include('Error.error')
 				 {!! Form::open(['route' => $ruta_controlador.'.store', 'method' => 'post', "files"=>true]) !!}
-
-                  @include($ruta_vista.'.form') 
-
-					<center>
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</center><br>		
-
-				{!! Form::close() !!}
-
-
-
-
+                  @include($ruta_vista.'.form')
+                 {!! Form::close() !!}
                 </div>
             </div>
         </div>

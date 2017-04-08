@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
             	<div class="panel-body">
             		<div class="col-lg-12">
@@ -24,10 +24,16 @@
                         </tr>
                     </table>
                     {!! Form::close() !!}
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         Numero de funcionarios : {{  $numero_funcionarios  }}
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
+                        Total Prenatal : {{  $total_prenatal  }}
+                    </div>
+                    <div class="col-lg-3">
+                        Total Lactancia : {{  $total_lactancia  }}
+                    </div>
+                    <div class="col-lg-3">
                         Total : {{  $total  }}
                     </div>
             		<div class="table table-responsive">
@@ -44,8 +50,32 @@
             						@foreach ($values as $value)
             						<tr class="success">
             							<td>{{ $value->id }}</td>
-                                        <td>{{ $value->funcionario->ci }}</td>
-            							<td>{{ $value->familiar->persona->nombre }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">Nombre: </label>{{ $value->funcionario->nom_com }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">CI: </label>{{ $value->funcionario->ci }}
+                                                </div>
+                                            </div>
+                                        </td>
+            							<td>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">Nombre: </label>{{ $value->familiar->persona->nombre }} {{ " ".$value->familiar->persona->apellido_paterno }} {{ " ".$value->familiar->persona->apellido_materno }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label for="">CI: </label>{{ $value->familiar->persona->ci }}
+                                                </div>
+                                            </div>
+                                            {{ $value->familiar->persona->nombre }}
+
+                                        </td>
                                         <td>{{ $value->tipo_subsidio }}</td>
                                         <td>{{ $value->monto }}</td>
             							<td>

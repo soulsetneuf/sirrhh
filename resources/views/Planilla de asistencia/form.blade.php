@@ -17,12 +17,12 @@
 					</div>
 					<div class="form-group">
 						<div class="col-lg-6">
-	
+                            {!! Form::label('Ubicacion fisica') !!}
+                            {!! Form::text('ubicacion_fisica', null, ['class' => 'form-control' , 'required' => 'required']) !!}
 						</div>
 						<div class="col-lg-6">
-						{!! Form::label('Descripcion', 'Descripcion') !!}
-                      {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-							
+                            {!! Form::label('Descripcion', 'Descripcion') !!}
+                            {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
 						</div>
 					</div>
 
@@ -43,10 +43,9 @@
 					   	{!! Form::label('Archivo', 'Archivo') !!}
                       	{!! Form::file('path'); !!}
 						</div>
-					
 					</div>
-
-				</div>				  
+				</div>
+                @include("Boton.boton")
 		</div>
 
 	</div>

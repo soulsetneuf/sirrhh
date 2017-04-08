@@ -14,6 +14,7 @@ class PlanillaDeAsistencia extends Model
     			,"gestion"
                 ,"mes"
                 ,"total_personal"
+                ,"ubicacion_fisica"
                 ,"descripcion"];
     public function setPathAttribute($path){
 		$name = Carbon::now()->second.$path->getClientOriginalName();

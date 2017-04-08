@@ -21,10 +21,6 @@
 
                         <?php echo $__env->make($ruta_vista.'.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-                        <center>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </center><br>
-
                         <?php echo Form::close(); ?>
 
 

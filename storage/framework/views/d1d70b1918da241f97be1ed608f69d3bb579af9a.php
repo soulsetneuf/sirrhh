@@ -15,23 +15,11 @@
 				Error al guardar los Datos.
 				</div>
 				<?php endif; ?>
-
-
                  <?php echo $__env->make('Error.error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>	
 				 <?php echo Form::open(['route' => $ruta_controlador.'.store', 'method' => 'post',  "files"=>true]); ?>
 
-
-                  <?php echo $__env->make($ruta_vista.'.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
-
-					<center>
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</center><br>		
-
-				<?php echo Form::close(); ?>
-
-
-
-
+                  <?php echo $__env->make($ruta_vista.'.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+     			 <?php echo Form::close(); ?>
 
                 </div>
             </div>

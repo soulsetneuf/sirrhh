@@ -15,6 +15,7 @@ class PlanillaDeSueldo extends Model
                 ,"mes"
                 ,"total_personal"
                 ,"monto_total"
+                ,"ubicacion_fisica"
                 ,"descripcion"];
     public function setPathAttribute($path){
 		$name = Carbon::now()->second.$path->getClientOriginalName();

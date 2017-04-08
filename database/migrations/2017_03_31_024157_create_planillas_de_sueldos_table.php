@@ -21,6 +21,7 @@ class CreatePlanillasDeSueldosTable extends Migration
                 $table->string("mes");
                 $table->integer("total_personal");
                 $table->integer("monto_total");
+                $table->integer("ubicacion_fisica");
                 $table->string("descripcion");
                 $table->timestamps();//created_at, updated_at
             });

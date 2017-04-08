@@ -52,27 +52,22 @@
             							<td><?php echo e($value->fecha_asignacion); ?></td>
             							<td><?php echo e($value->notificador->ci); ?></td>
 										<td><?php echo e($value->notificado->ci); ?></td>
-            							<td>
-            								<img src="enl_con/<?php echo e($value->path); ?>" alt="No se encontro el archivo" style="width: 100px;height: 100px">
-            							</td>
-            							<td>
-
-            							<td>
-            							<div class="btn-group">
-											<?php echo link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
+                                        <td>
+                                            <div class="btn-group">
+                                                <?php echo link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
 
 
-											<?php echo link_to_route($ruta_controlador.'.edit',$title="Editar",$parameters=$value->id, $attributes=["class"=>"btn btn-warning btn-xs"]); ?>
+                                                <?php echo link_to_route($ruta_controlador.'.edit',$title="Editar",$parameters=$value->id, $attributes=["class"=>"btn btn-warning btn-xs"]); ?>
 
 
-            								 <?php echo Form::open(['route' =>[ $ruta_controlador.'.destroy',$value->id], 'method' => 'DELETE']); ?>
+                                                 <?php echo Form::open(['route' =>[ $ruta_controlador.'.destroy',$value->id], 'method' => 'DELETE']); ?>
 
 
-                                              <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
-            								 <?php echo Form::close(); ?> 
-					
-										</div>
+                                                  <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
+                                                 <?php echo Form::close(); ?>
 
+
+                                            </div>
             							</td>
             						</tr>
             						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

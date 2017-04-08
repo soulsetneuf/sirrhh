@@ -16,17 +16,9 @@
 				Error al guardar los Datos.
 				</div>
 				@endif
-
 				 {!! Form::model($value,['route' => [$ruta_controlador.'.update',$value->id], 'method' => 'put',"files"=>"true"]) !!}
-
-                  @include($ruta_vista.'.form') 
-
-					<center>
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</center><br>	
-
-				{!! Form::close() !!}	
-
+                  @include($ruta_vista.'.form')
+				 {!! Form::close() !!}
                 </div>
             </div>
         </div>
