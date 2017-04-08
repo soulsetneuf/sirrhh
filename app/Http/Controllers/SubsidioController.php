@@ -17,8 +17,19 @@ class SubsidioController extends Controller
     var $ruta_controlador="subsidios";
     public function index(Request $request)
     {
-        return \View::make($this->ruta_vista.'.list',
-            ["values"=>Subsidio::all(),"ruta_controlador"=>$this->ruta_controlador]);
+        $tipo_subsidio=$request->get("tipo_subsidio");
+        if (!(is_null($tipo_subsidio)))
+        {
+            $query=Subsidio::tiposubsidio($tipo_subsidio);
+            return \View::make($this->ruta_vista.'.list',
+                ["values"=>$query->get(),"total"=>$query->sum('monto'),"numero_funcionarios"=>$query->count(),"ruta_controlador"=>$this->ruta_controlador]);
+        }
+        else
+        {
+            $query=Subsidio::all();
+            return \View::make($this->ruta_vista.'.list',
+                ["values"=>$query,"total"=>$query->sum('monto'),"numero_funcionarios"=>$query->count(),"ruta_controlador"=>$this->ruta_controlador]);
+        }
     }
     public function report(Request $request)
     {

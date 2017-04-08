@@ -13,6 +13,10 @@ class Familiar extends Model
                 ,'tipo_parentesco'
                 ];
     public function funcionario() {
-		return $this->belongsTo('sisRRHH\funcionario', 'funcionario_id');
+		return $this->belongsTo('sisRRHH\funcionario','id', 'funcionario_id');
 	}
+    public function persona()
+    {
+        return $this->hasOne('sisRRHH\Persona', 'id', 'familiar_id');
+    }
 }
