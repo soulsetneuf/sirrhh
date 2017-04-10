@@ -66,18 +66,7 @@
 										</div>
 									</div>
 								</div>
-                                <div class="form-group">
-                                    <div class="col-lg-2">
-                                        <?php echo link_to_route($ruta_controlador.'.index',$title="Atras",$parameters="", $attributes=["class"=>"btn btn-default"]); ?>
-
-                                    </div>
-                                    <div class="col-lg-6">
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <?php echo link_to_route($ruta_controlador.'.edit',$title="Modificar",$parameters=$value->id, $attributes=["class"=>"btn btn-warning"]); ?>
-
-                                    </div>
-                                </div>
+                                <?php echo $__env->make("Boton.show", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 							</div>
 
 						</div>

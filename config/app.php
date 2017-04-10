@@ -179,6 +179,7 @@ return [
         sisRRHH\Providers\RouteServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Elibyy\TCPDF\ServiceProvider::class,
 
     ],
 
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
 
     ],
 

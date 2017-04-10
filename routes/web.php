@@ -41,12 +41,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('memorandum','MemorandumController');
     Route::resource('familiares','FamiliarController');
     Route::resource('subsidios','SubsidioController');
+    Route::resource('promociones','PromocionController');
 
     
     Route::get("report/planillas_de_subsidios",'PlanillaDeSubsidioController@report')->name('planillas_de_subsidios.report');
     Route::get("report/planillas_de_asistencia",'PlanillaDeAsistenciaController@report')->name('planillas_de_asistencia.report');
     Route::get('report/planillas_de_sueldos','PlanillaDeSueldoController@report')->name('planillas_de_sueldos.report');
     Route::get('report/memorandum','MemorandumController@report')->name('memorandum.report');
+    Route::get('report/promociones','Promocion@report')->name('promociones.report');
+
+    Route::get("/pdf/memorandum/{id}",'MemorandumController@pdf')->name('memorandum.pdf');
+    Route::get("/pdf/planillas_de_subsidios/{id}",'PlanillaDeSubsidioController@pdf')->name('planillas_de_subsidios.pdf');
+    Route::get("/pdf/planillas_de_asistencia/{id}",'PlanillaDeAsistenciaController@pdf')->name('planillas_de_asistencia.pdf');
+    Route::get("/pdf/planillas_de_sueldos/{id}",'PlanillaDeSueldoController@pdf')->name('planillas_de_sueldos.pdf');
+    Route::get("/pdf/promociones/{id}",'PromocionController@pdf')->name('promociones.pdf');
 
 
     Route::get('dropdown', function(){

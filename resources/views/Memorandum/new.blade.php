@@ -24,10 +24,6 @@
                   @include($ruta_vista.'.form') 
 
 				{!! Form::close() !!}
-
-
-
-
                 </div>
             </div>
         </div>

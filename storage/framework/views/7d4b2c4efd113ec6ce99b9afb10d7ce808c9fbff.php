@@ -65,7 +65,7 @@
             							</td>
             							<td>
             							<div class="btn-group">
-                                                              <?php echo link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
+                                             <?php echo link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
 
                                                                   
             								 <?php echo link_to_route($ruta_controlador.'.edit',$title="Editar",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
@@ -75,8 +75,8 @@
 
 
                                               <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
-            								 <?php echo Form::close(); ?> 
-					
+            								 <?php echo Form::close(); ?>
+
 										</div>
 
             							</td>

@@ -1,1 +1,1 @@
-ECHO est  activado.
+<img src="{{ asset("enl_con/".$value->path) }}" alt="No se encontro el archivo" width='100%' height='100%'>
