@@ -24,6 +24,7 @@
                         </tr>
                     </table>
                     {!! Form::close() !!}
+
                     <div class="col-lg-3">
                         Numero de funcionarios : {{  $numero_funcionarios  }}
                     </div>
@@ -36,6 +37,7 @@
                     <div class="col-lg-3">
                         Total : {{  $total  }}
                     </div>
+
             		<div class="table table-responsive">
             			<table class="table table-striped">
             				<thead>

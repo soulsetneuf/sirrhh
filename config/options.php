@@ -20,6 +20,10 @@ return [
     "Noviembre"=>"Noviembre",
     "Diciembre"=>"Diciembre"
 ],
+"tipo_promocion"=>[
+        "Ascenso"=>"Ascenso",
+        "Despido"=>"Despido"
+    ],
 "gestiones"=>$array_gestiones,
 "expedido"=>[
     "Potosi"=>"Potosi",
