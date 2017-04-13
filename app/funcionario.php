@@ -44,4 +44,7 @@ class funcionario extends Model
     public function familiares() {
         return $this->hasMany('sisRRHH\Familiar');
     }
+    public function getNombreCompletoAttribute(){
+        return $this->nom_com;
+    }
 }

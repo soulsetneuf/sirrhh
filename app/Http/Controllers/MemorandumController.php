@@ -21,7 +21,6 @@ class MemorandumController extends Controller
         $notificado_id=$request->get("notificado_id");
         if (!(is_null($notificado_id)))
         {
-
                   return \View::make($this->ruta_vista.'.list',
             ["values"=>Memorandum::notificadoid($notificado_id)->get(),"ruta_controlador"=>$this->ruta_controlador]);
                   }

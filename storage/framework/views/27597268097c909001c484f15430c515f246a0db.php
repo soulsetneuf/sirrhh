@@ -45,8 +45,8 @@
             						<?php $__currentLoopData = $values; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
             						<tr class="success">
             							<td><?php echo e($value->id); ?></td>
-            							<td><?php echo e($value->funcionario_id); ?></td>
-            							<td><?php echo e($value->familiar_id); ?></td>
+            							<td><?php echo e($value->funcionario->ci); ?></td>
+            							<td><?php echo e($value->persona->ci); ?></td>
             							<td><?php echo e($value->tipo_parentesco); ?></td>
              							<td>
 

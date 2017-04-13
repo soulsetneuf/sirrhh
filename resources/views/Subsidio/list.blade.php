@@ -25,76 +25,65 @@
                     </table>
                     {!! Form::close() !!}
 
-                    <div class="col-lg-3">
-                        Numero de funcionarios : {{  $numero_funcionarios  }}
-                    </div>
-                    <div class="col-lg-3">
-                        Total Prenatal : {{  $total_prenatal  }}
-                    </div>
-                    <div class="col-lg-3">
-                        Total Lactancia : {{  $total_lactancia  }}
-                    </div>
-                    <div class="col-lg-3">
-                        Total : {{  $total  }}
-                    </div>
-
             		<div class="table table-responsive">
-            			<table class="table table-striped">
+            			<table class="table table-bordered">
             				<thead>
+                                <tr>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Nro</th>
+                                    <th colspan="2" style="text-align: center">Funcionario</th>
+                                    <th colspan="2" style="text-align: center">Beneficiario/a</th>
+                                    <th colspan="2" style="text-align: center">Tipo de subsidio</th>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Total</th>
+                                    <th>Fecha</th>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Acciones</th>
+                                </tr>
             					<tr>
-            						<th>#</th>
-            						<th>Funcionario</th>
-                                    <th>Familiar</th>
-                                    <th>Tipo de subsidio</th>
-                                    <th>Monto</th>
+            						<th>CI</th>
+                                    <th>Nombre completo</th>
+                                    <th>CI</th>
+                                    <th>Nombre completo</th>
+                                    <th>Prenatal</th>
+                                    <th>Lactancia</th>
             					</tr></thead>
             					<tbody>
             						@foreach ($values as $value)
             						<tr class="success">
             							<td>{{ $value->id }}</td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">Nombre: </label>{{ $value->funcionario->nom_com }}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">CI: </label>{{ $value->funcionario->ci }}
-                                                </div>
-                                            </div>
+                                            {{ $value->funcionario->ci }}
                                         </td>
             							<td>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">Nombre: </label>{{ $value->familiar->persona->nombre }} {{ " ".$value->familiar->persona->apellido_paterno }} {{ " ".$value->familiar->persona->apellido_materno }}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">CI: </label>{{ $value->familiar->persona->ci }}
-                                                </div>
-                                            </div>
-                                            {{ $value->familiar->persona->nombre }}
-
+                                            {{ $value->funcionario->nombre_completo }}
                                         </td>
-                                        <td>{{ $value->tipo_subsidio }}</td>
-                                        <td>{{ $value->monto }}</td>
+                                        <td>{{ $value->familiar->persona->ci}}</td>
+                                        <td>{{ $value->familiar->persona->nombre_completo}}</td>
+                                        <td>
+                                            @if($value->tipo_subsidio=="Prenatal")
+                                                {{$value->total}} bs
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($value->tipo_subsidio=="Lactancia")
+                                                {{$value->total}} bs
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $value->total }} bs
+                                        </td>
+                                        <td>
+                                            {{ $value->created_at }}
+                                        </td>
             							<td>
-
-            							<div class="btn-group">
-            								 {!! link_to_route($ruta_controlador.'.edit',$title="Editar",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"])  !!}
-
-            								 {!! Form::open(['route' =>[ $ruta_controlador.'.destroy',$value->id], 'method' => 'DELETE']) !!}
-
-                                              <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
-            								 {!! Form::close() !!} 
-					
-										</div>
-
+                                            @include("Boton.list")
             							</td>
             						</tr>
             						@endforeach
+                                    <tr>
+                                        <th colspan="5"></th>
+                                        <th>Total Prenatal : <br/>{{  $total_prenatal  }} bs</th>
+                                        <th>Total Lactancia : <br/>{{  $total_lactancia  }} bs</th>
+                                        <th>Total : <br/>{{  $total  }} bs</th>
+                                    </tr>
             					</tbody>
             				</table>
             			</div>

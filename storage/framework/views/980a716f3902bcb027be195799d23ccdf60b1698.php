@@ -63,22 +63,7 @@
             								<img src="enl_con/<?php echo e($value->path); ?>" alt="No se encontro el archivo" style="width: 100px;height: 100px">
             							</td>
             							<td>
-            							<div class="btn-group">
-
-                                                            <?php echo link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
-
-
-            								 <?php echo link_to_route($ruta_controlador.'.edit',$title="Modificar",$parameters=$value->id, $attributes=["class"=>"btn btn-warning btn-xs"]); ?>
-
-
-            								 <?php echo Form::open(['route' =>[ $ruta_controlador.'.destroy',$value->id], 'method' => 'DELETE']); ?>
-
-
-                                              <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
-            								 <?php echo Form::close(); ?> 
-					
-										</div>
-
+                                            <?php echo $__env->make("Boton.list", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             							</td>
             						</tr>
             						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

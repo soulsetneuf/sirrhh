@@ -44,8 +44,8 @@
             						@foreach ($values as $value)
             						<tr class="success">
             							<td>{{ $value->id }}</td>
-            							<td>{{ $value->funcionario_id }}</td>
-            							<td>{{ $value->familiar_id }}</td>
+            							<td>{{ $value->funcionario->ci }}</td>
+            							<td>{{ $value->persona->ci }}</td>
             							<td>{{ $value->tipo_parentesco }}</td>
              							<td>
 

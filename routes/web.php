@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/pdf/planillas_de_asistencia/{id}",'PlanillaDeAsistenciaController@pdf')->name('planillas_de_asistencia.pdf');
     Route::get("/pdf/planillas_de_sueldos/{id}",'PlanillaDeSueldoController@pdf')->name('planillas_de_sueldos.pdf');
     Route::get("/pdf/promociones/{id}",'PromocionController@pdf')->name('promociones.pdf');
+    Route::get("/pdf/list/promociones/{tipo_promocion}/{fecha_inicio}/{fecha_fin}",'PromocionController@pdfList')->name('promociones.list.pdf');
 
 
     Route::get('dropdown', function(){

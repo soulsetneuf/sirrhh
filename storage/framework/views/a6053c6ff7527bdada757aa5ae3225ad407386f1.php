@@ -15,9 +15,6 @@
 				Error al guardar los Datos.
 				</div>
 				<?php endif; ?>
-
-
-
 				 <?php echo Form::open(['route' => $ruta_controlador.'.store', 'method' => 'post', 'novalidate']); ?>
 
 
@@ -28,10 +25,6 @@
 					</center><br>		
 
 				<?php echo Form::close(); ?>
-
-
-
-
 
                 </div>
             </div>

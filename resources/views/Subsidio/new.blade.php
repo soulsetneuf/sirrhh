@@ -16,9 +16,6 @@
 				Error al guardar los Datos.
 				</div>
 				@endif
-
-
-
 				 {!! Form::open(['route' => $ruta_controlador.'.store', 'method' => 'post', 'novalidate']) !!}
 
                   @include($ruta_vista.'.form') 
@@ -28,10 +25,6 @@
 					</center><br>		
 
 				{!! Form::close() !!}
-
-
-
-
                 </div>
             </div>
         </div>

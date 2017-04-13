@@ -25,86 +25,69 @@
                     </table>
                     <?php echo Form::close(); ?>
 
-                    <div class="col-lg-3">
-                        Numero de funcionarios : <?php echo e($numero_funcionarios); ?>
 
-                    </div>
-                    <div class="col-lg-3">
-                        Total Prenatal : <?php echo e($total_prenatal); ?>
-
-                    </div>
-                    <div class="col-lg-3">
-                        Total Lactancia : <?php echo e($total_lactancia); ?>
-
-                    </div>
-                    <div class="col-lg-3">
-                        Total : <?php echo e($total); ?>
-
-                    </div>
             		<div class="table table-responsive">
-            			<table class="table table-striped">
+            			<table class="table table-bordered">
             				<thead>
+                                <tr>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Nro</th>
+                                    <th colspan="2" style="text-align: center">Funcionario</th>
+                                    <th colspan="2" style="text-align: center">Beneficiario/a</th>
+                                    <th colspan="2" style="text-align: center">Tipo de subsidio</th>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Total</th>
+                                    <th>Fecha</th>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Acciones</th>
+                                </tr>
             					<tr>
-            						<th>#</th>
-            						<th>Funcionario</th>
-                                    <th>Familiar</th>
-                                    <th>Tipo de subsidio</th>
-                                    <th>Monto</th>
+            						<th>CI</th>
+                                    <th>Nombre completo</th>
+                                    <th>CI</th>
+                                    <th>Nombre completo</th>
+                                    <th>Prenatal</th>
+                                    <th>Lactancia</th>
             					</tr></thead>
             					<tbody>
             						<?php $__currentLoopData = $values; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
             						<tr class="success">
             							<td><?php echo e($value->id); ?></td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">Nombre: </label><?php echo e($value->funcionario->nom_com); ?>
-
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">CI: </label><?php echo e($value->funcionario->ci); ?>
-
-                                                </div>
-                                            </div>
-                                        </td>
-            							<td>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">Nombre: </label><?php echo e($value->familiar->persona->nombre); ?> <?php echo e(" ".$value->familiar->persona->apellido_paterno); ?> <?php echo e(" ".$value->familiar->persona->apellido_materno); ?>
-
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="">CI: </label><?php echo e($value->familiar->persona->ci); ?>
-
-                                                </div>
-                                            </div>
-                                            <?php echo e($value->familiar->persona->nombre); ?>
-
+                                            <?php echo e($value->funcionario->ci); ?>
 
                                         </td>
-                                        <td><?php echo e($value->tipo_subsidio); ?></td>
-                                        <td><?php echo e($value->monto); ?></td>
             							<td>
+                                            <?php echo e($value->funcionario->nombre_completo); ?>
 
-            							<div class="btn-group">
-            								 <?php echo link_to_route($ruta_controlador.'.edit',$title="Editar",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"]); ?>
+                                        </td>
+                                        <td><?php echo e($value->familiar->persona->ci); ?></td>
+                                        <td><?php echo e($value->familiar->persona->nombre_completo); ?></td>
+                                        <td>
+                                            <?php if($value->tipo_subsidio=="Prenatal"): ?>
+                                                <?php echo e($value->total); ?> bs
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <?php if($value->tipo_subsidio=="Lactancia"): ?>
+                                                <?php echo e($value->total); ?> bs
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo e($value->total); ?> bs
+                                        </td>
+                                        <td>
+                                            <?php echo e($value->created_at); ?>
 
-
-            								 <?php echo Form::open(['route' =>[ $ruta_controlador.'.destroy',$value->id], 'method' => 'DELETE']); ?>
-
-
-                                              <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
-            								 <?php echo Form::close(); ?> 
-					
-										</div>
-
+                                        </td>
+            							<td>
+                                            <?php echo $__env->make("Boton.list", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             							</td>
             						</tr>
             						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                    <tr>
+                                        <th colspan="5"></th>
+                                        <th>Total Prenatal : <br/><?php echo e($total_prenatal); ?> bs</th>
+                                        <th>Total Lactancia : <br/><?php echo e($total_lactancia); ?> bs</th>
+                                        <th>Total : <br/><?php echo e($total); ?> bs</th>
+                                    </tr>
             					</tbody>
             				</table>
             			</div>

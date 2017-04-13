@@ -21,10 +21,11 @@ class Memorandum extends Model
                 ,"lugar"
                 ,"motivo"];
 
+    //Guardar direccion de imagen path
     public function setPathAttribute($path){
 		$name = Carbon::now()->second.$path->getClientOriginalName();
-		$this->attributes['path'] = $name;
-		\Storage::disk('local')->put($name, \File::get($path));
+		$this->attributes['path'] = $name;//cambia el nombre y lo guardar en la base
+		\Storage::disk('local')->put($name, \File::get($path));//guardar la imagen en la carpeta del proyecto
 	}
 	public function scopeAsignacion($query,$fecha_inicio,$fecha_fin)
 	{

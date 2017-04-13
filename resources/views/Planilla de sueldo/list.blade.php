@@ -62,17 +62,7 @@
             								<img src="enl_con/{{ $value->path }}" alt="No se encontro el archivo" style="width: 100px;height: 100px">
             							</td>
             							<td>
-            							<div class="btn-group">
-                                             {!! link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"])  !!}
-                                                                  
-            								 {!! link_to_route($ruta_controlador.'.edit',$title="Editar",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"])  !!}
-
-            								 {!! Form::open(['route' =>[ $ruta_controlador.'.destroy',$value->id], 'method' => 'DELETE']) !!}
-
-                                              <input type="submit" value="Eliminar" name="eliminar" class="btn btn-danger btn-xs">
-            								 {!! Form::close() !!}
-										</div>
-
+                                            @include("Boton.list")
             							</td>
             						</tr>
             						@endforeach
