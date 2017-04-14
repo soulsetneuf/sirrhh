@@ -19,10 +19,11 @@ class MemorandumController extends Controller
     public function index(Request $request)
     {
         $notificado_id=$request->get("notificado_id");
+        $tipo_de_memorandum_id=$request->get("tipo_de_memorandum_id");
         if (!(is_null($notificado_id)))
         {
                   return \View::make($this->ruta_vista.'.list',
-            ["values"=>Memorandum::notificadoid($notificado_id)->get(),"ruta_controlador"=>$this->ruta_controlador]);
+            ["values"=>Memorandum::listar($notificado_id,$tipo_de_memorandum_id)->get(),"ruta_controlador"=>$this->ruta_controlador]);
                   }
         else
         return \View::make($this->ruta_vista.'.list',

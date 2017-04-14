@@ -34,7 +34,7 @@
                                     <th colspan="2" style="text-align: center">Beneficiario/a</th>
                                     <th colspan="2" style="text-align: center">Tipo de subsidio</th>
                                     <th rowspan="2" style="vertical-align: middle;text-align: center">Total</th>
-                                    <th>Fecha</th>
+                                    <th rowspan="2" style="vertical-align: middle;text-align: center">Fecha</th>
                                     <th rowspan="2" style="vertical-align: middle;text-align: center">Acciones</th>
                                 </tr>
             					<tr>

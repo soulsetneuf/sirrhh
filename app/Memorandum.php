@@ -43,8 +43,11 @@ class Memorandum extends Model
     {
         return $this->hasOne('sisRRHH\TipoDeMemorandum', 'id', 'tipo_de_memorandum_id');
     }
-    public function scopeNotificadoid($query,$id)
+    public function scopeListar($query,$notificado_id,$tipo_memorandum)
     {
-        return $query->where('notificado_id', '=', $id);
+        if($tipo_memorandum=="Todos")
+            return $query->where('notificado_id', '=', $notificado_id);
+        else
+            return $query->where('notificado_id', '=', $notificado_id)->where("tipo_de_memorandum_id","=",$tipo_memorandum);
     }
 }

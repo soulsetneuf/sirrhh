@@ -24,6 +24,11 @@
 								<?php echo Form::select('notificado_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'required']); ?>
 
 							</td>
+                            <td>Tipo de memorandum </td>
+                            <td>
+                                <?php echo Form::select('tipo_de_memorandum_id',array_add(sisRRHH\TipoDeMemorandum::pluck("tipo","id"),"Todos","Todos"),null,['class' => 'form-control' , 'required' => 'required']); ?>
+
+                            </td>
 							<td>
 								<button type="submit" class="btn btn-primary">Buscar</button>
 							</td>

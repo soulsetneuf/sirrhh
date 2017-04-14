@@ -19,10 +19,6 @@ Route::get('/', function () {
 
 Auth::routes(); //login,register
 
-
-
-
-
 Route::resource('/contratos','contratos');//create,edit,
 
 Route::get('/contratos/{id_dat}/{nombre}/{ci}', 'contratos@create');
