@@ -25,7 +25,7 @@ Route::get('/contratos/{id_dat}/{nombre}/{ci}', 'contratos@create');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index');
-    Route::resource('/funcionarios','funcionarios');
+    Route::resource('funcionarios','funcionarios');
     Route::resource('tipos_de_contratos','TipoDeContratoController');
     Route::resource('tipos_de_memorandum','TipoDeMemorandumController');
     Route::resource('cargos','CargoController');
@@ -51,7 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/pdf/planillas_de_asistencia/{id}",'PlanillaDeAsistenciaController@pdf')->name('planillas_de_asistencia.pdf');
     Route::get("/pdf/planillas_de_sueldos/{id}",'PlanillaDeSueldoController@pdf')->name('planillas_de_sueldos.pdf');
     Route::get("/pdf/promociones/{id}",'PromocionController@pdf')->name('promociones.pdf');
-    Route::get("/pdf/list/promociones/{tipo_promocion}/{fecha_inicio}/{fecha_fin}",'PromocionController@pdfList')->name('promociones.list.pdf');
+
+
+    Route::get("/pdf/list/promociones/{tipo_promocion}/{tipo_memorandum}/{fecha_inicio}/{fecha_fin}",'PromocionController@pdfList')->name('promociones.list.pdf');
 
 
     Route::get('dropdown', function(){

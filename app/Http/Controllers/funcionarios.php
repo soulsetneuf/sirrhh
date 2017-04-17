@@ -17,9 +17,15 @@ class funcionarios extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    var $ruta_vista="Funcionario";
+    var $ruta_controlador="funcionarios";
+
+    public function index(Request $request)
     {
-        return view('funcionarios.insertarfun');
+        //Vista funcionario anteriormente
+        //return view('funcionarios.insertarfun');
+        return \View::make($this->ruta_vista.'.list',
+                ["values"=>funcionario::all(),"ruta_controlador"=>$this->ruta_controlador]);
     }
 
     /**

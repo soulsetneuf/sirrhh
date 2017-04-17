@@ -1,23 +1,36 @@
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-                            <hr>
-                            <h2 class="intro-text text-center">Promociones</h2>
-                            <hr>
-                        </div>
-
-                        <div class="col-lg-6">
-                            Total dias trabajados : <label for="" id="total"></label> dias
-                        </div>
-                        <div>
+<style>
+    td
+    {
+        text-align: center;
+    }
+    th{
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+                            <h2 class="intro-text text-center">Dias trabajados</h2>
+        <label>
+            Tipo de contrato: {{ $tipo_promocion }}
+        </label>
+        <label>
+            Tipo de memorandum: {{ $tipo_memorandum }}
+        </label>
+        <label>
+            Fecha Inicio: {{ $fecha_inicio }}
+        </label>
+        <label>
+            Fecha Fin: {{ $fecha_fin }}
+        </label>
+<br/>
+<br/>
+                        <?php $nro=0; ?>
                             <table border="1">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Funcionario</th>
+                                    <th>CI</th>
+                                    <th>Nombre completo</th>
+                                    <th>Tipo de archivo</th>
                                     <th>Tipo de promocion</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
@@ -26,22 +39,43 @@
                                 </thead>
                                 <tbody>
                                 <?php $total=0; ?>
-                                @foreach ($values as $value)
-                                    <tr class="success">
-                                        <td>{{ $value->id }}</td>
+                                @foreach ($promociones as $value)
+                                    <tr>
+                                        <td class="center">{{ $nro=$nro+1 }}</td>
                                         <td>{{ $value->funcionario->ci }}</td>
+                                        <td>{{ $value->funcionario->nombre_completo }}</td>
+                                        <td>{{ "Contrato" }}</td>
                                         <td>{{ $value->tipo_promocion }}</td>
                                         <td>{{ $value->fecha_inicio }}</td>
                                         <td>{{ $value->fecha_fin }}</td>
-                                        <td>{{ Carbon\Carbon::parse($value->fecha_inicio)->diffInDays(Carbon\Carbon::parse($value->fecha_fin))  }} dias</td>
-                                        <?php $total=$total+Carbon\Carbon::parse($value->fecha_inicio)->diffInDays(Carbon\Carbon::parse($value->fecha_fin))?>
+                                        <td>
+                                            {{ $dias_trabajados=$value->diasTrabajados($value->fecha_inicio,$value->fecha_fin)  }}
+                                        </td>
+                                        <?php $total=$total+$dias_trabajados; ?>
                                     </tr>
                                 @endforeach
+                                @foreach ($memorandum as $value)
+                                    <tr>
+                                        <td style="padding: 10px">{{ $nro=$nro+1 }}</td>
+                                        <td>{{ $value->notificado->ci }}</td>
+                                        <td>{{ $value->notificado->nombre_completo }}</td>
+                                        <td>{{ "Memorandum" }}</td>
+                                        <td>{{ $value->memorandum->tipo }}</td>
+                                        <td>{{ $value->fecha_asignacion }}</td>
+                                        <td>{{ $value->fecha_designacion }}</td>
+                                        <td>
+                                            {{ $dias_trabajados=$value->diasTrabajados($value->fecha_asignacion,$value->fecha_designacion)  }}
+                                        </td>
+                                        <?php $total=$total+$dias_trabajados; ?>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td colspan="6" style="text-align: right">
+                                        Total dias trabajados:
+                                    </td>
+                                    <td>
+                                        {{ $total }} dias
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>

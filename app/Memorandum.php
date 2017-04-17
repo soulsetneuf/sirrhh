@@ -50,4 +50,19 @@ class Memorandum extends Model
         else
             return $query->where('notificado_id', '=', $notificado_id)->where("tipo_de_memorandum_id","=",$tipo_memorandum);
     }
+    public function diasTrabajados($fecha_inicio,$fecha_fin)
+    {
+        return Carbon::parse($fecha_inicio)->diffInDays(Carbon::parse($fecha_fin))." dias";
+    }
+    public function scopeFecha($query,$fecha_inicio,$fecha_fin,$tipo_memorandum)
+    {
+        if($tipo_memorandum=="Ninguno")
+            return $query->where("tipo_de_memorandum_id","=",-1);
+        if($tipo_memorandum=="Todos")
+        {
+            return $query->whereBetween("fecha_asignacion",array($fecha_inicio,$fecha_fin));
+        }
+        else
+            return $query->whereBetween("fecha_designacion",array($fecha_inicio,$fecha_fin))->where("tipo_de_memorandum_id","=",$tipo_memorandum);
+    }
 }
