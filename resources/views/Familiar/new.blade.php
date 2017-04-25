@@ -17,21 +17,10 @@
 				</div>
 				@endif
 
-				@include('Error.error')	
-
+				@include('Error.error')
 				 {!! Form::open(['route' => $ruta_controlador.'.store', 'method' => 'post', "files"=>true]) !!}
-
-                  @include($ruta_vista.'.form') 
-
-					<center>
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</center><br>		
-
+                  @include($ruta_vista.'.form')
 				{!! Form::close() !!}
-
-
-
-
                 </div>
             </div>
         </div>

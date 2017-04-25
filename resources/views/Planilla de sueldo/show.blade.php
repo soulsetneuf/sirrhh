@@ -33,42 +33,35 @@
 									</center>
 
 									</div>
-							<div class="col-lg-12">
-
 								<div class="box">
-									<div class="form-group">
-										<div class="col-lg-6">
-											{!! Form::label('Total personal en planilla') !!}:
-											{!! Form::label($value->total_personal) !!}
-										</div>
-										
-									</div>
-									<div class="form-group">
-										<div class="col-lg-6">
-											{!! Form::label('Descripcion', 'Descripcion') !!}:
-											{!! Form::label($value->descripcion) !!}
-
-										</div>
-									</div>
-
-
-									<div class="form-group">
-										<div class="col-lg-5">
-											{!! Form::label('Mes', 'Mes') !!}:
-											{!! Form::label($value->mes) !!}
-										</div>
-										<div class="col-lg-5">
-											{!! Form::label('Gestion', 'Gestion') !!}:
-											{!! Form::label($value->gestion) !!}
-										</div>
-									</div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-lg-6">
+                                                {!! Form::label('Total personal en planilla') !!}:
+                                                {!! Form::label($value->total_personal) !!}
+                                            </div>
+                                            <div class="col-lg-6">
+                                                {!! Form::label('Descripcion', 'Descripcion') !!}:
+                                                {!! Form::label($value->descripcion) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-lg-6">
+                                                {!! Form::label('Mes', 'Mes') !!}:
+                                                {!! Form::label($value->mes) !!}
+                                            </div>
+                                            <div class="col-lg-6">
+                                                {!! Form::label('Gestion', 'Gestion') !!}:
+                                                {!! Form::label($value->gestion) !!}
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
                                 @include("Boton.show")
-							</div>
-
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

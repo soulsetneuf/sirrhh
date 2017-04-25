@@ -37,6 +37,31 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Funcionario CI</label>
+
+                            <div class="col-md-6">
+                                {!! Form::select('funcionario_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                {!! link_to_route('funcionarios.create',$title="Nuevo funcionario",$parameters="", $attributes=[""])  !!}
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Tipo</label>
+
+                            <div class="col-md-6">
+                                {!! Form::select('tipo',config("options.tipo_cuenta"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña</label>

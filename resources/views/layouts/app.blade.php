@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\DB;
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style>
+        a{
+            font-size: 0.8em;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -55,10 +60,15 @@ use Illuminate\Support\Facades\DB;
                     <ul class="nav navbar-nav">
                             <li>
                                 {!! link_to_route('funcionarios.index',$title="Funcionarios",$parameters="", $attributes="")  !!}
-
                             </li>
                             <li>
                                 {!! link_to_route('memorandum.index',$title="Memorandum",$parameters="", $attributes="")  !!}
+                            </li>
+                            <li>
+                                {!! link_to_route('funcionario_contratos.index',$title="Contratos",$parameters="", $attributes="")  !!}
+                            </li>
+                            <li>
+                                {!! link_to_route('promociones.index',$title="Promociones",$parameters="", $attributes="")  !!}
                             </li>
                             <li>
                                 {!! link_to_route('planillas_de_asistencia.index',$title="Asistencia",$parameters="", $attributes="")  !!}
@@ -68,8 +78,17 @@ use Illuminate\Support\Facades\DB;
                                 {!! link_to_route('planillas_de_subsidios.index',$title="Subsidios",$parameters="", $attributes="")  !!}
                             </li>
                             <li>
+                                {!! link_to_route('subsidios.index',$title="Detalle Subsidios",$parameters="", $attributes="")  !!}
+                            </li>
+                            <li>
                                 {!! link_to_route('planillas_de_sueldos.index',$title="Sueldos",$parameters="", $attributes="")  !!}
                             </li>
+
+                            @if(!Auth::guest()&& Auth::user()->tipo=="Administrador")
+                                <li>
+                                    {!! link_to_route('institucion.index',$title="Configuracion",$parameters="", $attributes="")  !!}
+                                </li>
+                            @endif
                         </ul>
                     </ul>
                     
@@ -84,9 +103,10 @@ use Illuminate\Support\Facades\DB;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="">Provincia: {{ \sisRRHH\Institucion::find(1)->provincia->nombre }}</a>
+                                        <a href="">Municipio: {{ \sisRRHH\Institucion::find(1)->municipio->nombre }}</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

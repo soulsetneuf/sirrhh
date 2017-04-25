@@ -8,9 +8,19 @@
         font-weight: bold;
     }
 </style>
-                            <h2 class="intro-text text-center">Dias trabajados</h2>
+<table>
+    <tr>
+        <td colspan="4"><h1 class="intro-text text-center">Promociones</h1></td>
+    </tr>
+</table>
+<br/>
+<br/>
         <label>
-            Tipo de contrato: {{ $tipo_promocion }}
+            @if($tipo_promocion=="Todos")
+                Tipo de contrato: Todos
+            @else
+                Tipo de contrato: {{ \sisRRHH\TipoDeContrato::find($tipo_promocion)->tipo  }}
+            @endif
         </label>
         <label>
             Tipo de memorandum: {{ $tipo_memorandum }}
@@ -70,7 +80,7 @@
                                     </tr>
                                 @endforeach
                                 <tr>
-                                    <td colspan="6" style="text-align: right">
+                                    <td colspan="7" style="text-align: right">
                                         Total dias trabajados:
                                     </td>
                                     <td>

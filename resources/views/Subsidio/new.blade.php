@@ -36,7 +36,7 @@
 <script>
 	$(document).ready(function(){
 		$('#funcionario_id').change(function(){
-			$.get("{{ url('dropdown')}}",
+			$.get("{{ url('parentesco')}}",
 			{ option: $(this).val() },
 			function(data) {
 				$('#familiar_id').empty();

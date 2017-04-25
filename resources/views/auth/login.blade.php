@@ -61,7 +61,7 @@
                                 
                             </div>
                             <div class="col-md-6">
-                            <center><a href="/register">Registrar</a></center>
+                                <center><a href="{{ url("register") }}">Registrar</a></center>
                                 
                             </div>
                             

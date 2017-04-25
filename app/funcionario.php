@@ -47,4 +47,14 @@ class funcionario extends Model
     public function getNombreCompletoAttribute(){
         return $this->nom_com;
     }
+    public function getCiNombreAttribute(){
+        return $this->ci." ".$this->nom_com;
+    }
+    public function scopeId($query,$funcionario_id)
+    {
+        if($funcionario_id=="Todos")
+            return $query;
+        else
+            return $query->where("id","=",$funcionario_id);
+    }
 }

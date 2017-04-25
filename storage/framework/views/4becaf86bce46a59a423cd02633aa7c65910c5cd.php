@@ -69,7 +69,7 @@
             <?php if(Route::has('login')): ?>
                 <div class="top-right links">
                     <a href="<?php echo e(url('/login')); ?>">Login</a>
-                    <!--<a href="<?php echo e(url('/register')); ?>">Registrar</a>-->
+                    <!--<a href="<?php echo e(url('/funcionarios')); ?>">Registrar</a>-->
                 </div>
             <?php endif; ?>
 
@@ -83,7 +83,7 @@
                     <a href="https://laracasts.com">Administrativa</a>
                     <a href="https://laravel-news.com">Técnica</a>
                     <a href="https://forge.laravel.com">Legal</a>
-                    <a href="/home">RRHH</a>
+                    <a href="<?php echo e(url('home')); ?>">RRHH</a>
                     <a href="https://amdepo.org.bo/laravel/laravel">Contactos</a>
                 </div>
             </div>

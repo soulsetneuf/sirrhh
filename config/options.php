@@ -18,7 +18,7 @@ return [
     "Septiembre"=>"Septiembre",
     "Octubre"=>"Octubre",
     "Noviembre"=>"Noviembre",
-    "Diciembre"=>"Diciembre"
+    "Diciembre"=>"Diciembre",
 ],
 "tipo_promocion"=>[
         "Ascenso"=>"Ascenso",

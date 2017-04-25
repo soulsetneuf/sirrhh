@@ -54,6 +54,7 @@
             						<th>#</th>
                                     <th>Funcionario</th>
                                     <th>Tipo de Memorandum</th>
+                                    <th>Ubicacion Fisica</th>
             						<th>Fecha Asignacion</th>
             						<th>Notificador</th>
             					</tr>
@@ -64,6 +65,7 @@
             							<td><?php echo e($value->id); ?></td>
                                         <td><?php echo e($value->notificado->ci); ?></td>
                                         <td><?php echo e($value->memorandum->tipo); ?></td>
+                                        <td><?php echo e($value->ubicacion_fisica); ?></td>
             							<td><?php echo e($value->fecha_asignacion); ?></td>
             							<td><?php echo e($value->notificador->ci); ?></td>
                                         <td>
@@ -100,7 +102,6 @@
                                 $attributes=["class"=>"btn btn-default"]); ?>
 
                             <?php endif; ?>
-
             				 <?php echo link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"]); ?>
 
             			</center>

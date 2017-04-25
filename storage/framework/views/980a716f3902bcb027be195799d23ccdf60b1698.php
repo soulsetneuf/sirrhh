@@ -11,33 +11,7 @@
             			<h2 class="intro-text text-center">Planillas de subsidios</h2>
             			<hr>
             		</div>
-
-
-            		<?php echo Form::open(['route' => $ruta_controlador.'.index', 'method' => 'GET']); ?>
-
-            			<table class="table">
-            				<tr>
-            					<td>Gestion</td>
-            					<td>
-                      				<?php echo Form::select('gestion',array_add(config("options.gestiones"), 'todos', "todos"),null,['class' => 'form-control' , 'required' => 'required']); ?>
-
-            					</td>
-            					<td>
-            						Mes
-            					</td>
-            					<td>
-            							<?php echo Form::select('mes',config("options.meses"),null,['class' => 'form-control' , 'required' => 'required']); ?>
-
-            					</td>
-            					<td>
-            							<button type="submit" class="btn btn-primary">Buscar</button>	
-            					</td>
-            				</tr>
-            			</table>
-					<?php echo Form::close(); ?>
-
-
-					
+                    <?php echo $__env->make("Search.gestion_mes", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             		<div class="table table-responsive">
             			<table class="table table-striped">
             				<thead>
@@ -47,8 +21,7 @@
             						<th>Mes</th>
             						<th>Beneficiarios</th>
             						<th>Monto Total</th>
-            						<th>Archivo</th>
-
+                                    <th>Ubicacion fisica</th>
             					</tr>
             				</thead>
             					<tbody>
@@ -58,10 +31,8 @@
             							<td><?php echo e($value->gestion); ?></td>
             							<td><?php echo e($value->mes); ?></td>
             							<td><?php echo e($value->beneficiarios); ?></td>
-            							<td><?php echo e($value->monto_total); ?></td>
-            							<td>
-            								<img src="enl_con/<?php echo e($value->path); ?>" alt="No se encontro el archivo" style="width: 100px;height: 100px">
-            							</td>
+                                        <td><?php echo e($value->monto_total); ?></td>
+            							<td><?php echo e($value->ubicacion_fisica); ?></td>
             							<td>
                                             <?php echo $__env->make("Boton.list", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             							</td>
@@ -70,15 +41,8 @@
             					</tbody>
             				</table>
             			</div>
-            			<center>
-            				 <?php echo link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"]); ?>
-
-            			</center>
-
+                    <?php echo $__env->make("Boton.gestion_mes", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             		</div>
-
-
-
             </div>
         </div>
     </div>

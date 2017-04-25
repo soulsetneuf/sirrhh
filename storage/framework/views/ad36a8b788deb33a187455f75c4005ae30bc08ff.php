@@ -32,86 +32,86 @@
                                     </center>
 
                                 </div>
-                                <div class="col-lg-12">
-
                                     <div class="box">
-                                        <div class="form-group">
-                                            <div class="col-lg-6">
-                                                <?php echo Form::label('Tipo de memorandum', 'Tipo de memorandum'); ?>:
-                                                <?php echo Form::label($value->memorandum->tipo); ?>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Tipo de memorandum', 'Tipo de memorandum'); ?>:
+                                                    <?php echo Form::label($value->memorandum->tipo); ?>
 
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <?php echo Form::label('Numero de memorandum'); ?>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Numero de memorandum'); ?>
 
-                                                <?php echo Form::label($value->numero_memorandum); ?>
+                                                    <?php echo Form::label($value->numero_memorandum); ?>
 
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-lg-6">
-                                                <?php echo Form::label('Fecha asignacion del memorandum'); ?>:
-                                                <?php echo Form::label($value->fecha_asignacion); ?>
-
-
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <?php echo Form::label('Fecha fin de designacion'); ?>:
-                                                <?php echo Form::label($value->fecha_designacion); ?>
-
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Fecha asignacion'); ?>:
+                                                    <?php echo Form::label($value->fecha_asignacion); ?>
 
-                                        <div class="form-group">
-                                            <div class="col-lg-6">
-                                                <?php echo Form::label('Numero de tomo'); ?>:
-                                                <?php echo Form::label($value->numero_tomo); ?>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Fecha fin de designacion'); ?>:
+                                                    <?php echo Form::label($value->fecha_designacion); ?>
 
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <?php echo Form::label('Ubicacion fisica'); ?>
-
-                                                <?php echo Form::label($value->ubicacion_fisica); ?>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-lg-5">
-                                                <?php echo Form::label('Notificador/a'); ?>
-
-                                                <?php echo Form::label($value->notificador->ci); ?>
-
-                                            </div>
-                                            <div class="col-lg-5">
-                                                <?php echo Form::label('Notificado/a'); ?>
-
-                                                <?php echo Form::label($value->notificado->ci); ?>
-
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Numero de tomo'); ?>:
+                                                    <?php echo Form::label($value->numero_tomo); ?>
 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Ubicacion fisica'); ?>
 
-                                        <div class="form-group">
-                                            <div class="col-lg-5">
-                                                <?php echo Form::label('Lugar'); ?>
+                                                    <?php echo Form::label($value->ubicacion_fisica); ?>
 
-                                                <?php echo Form::label($value->lugar); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Notificador/a'); ?>
 
-                                              </div>
-                                            <div class="col-lg-5">
-                                                <?php echo Form::label('Motivo'); ?>
+                                                    <?php echo Form::label($value->notificador->ci); ?>
 
-                                                <?php echo Form::label($value->motivo); ?>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Notificado/a'); ?>
 
+                                                    <?php echo Form::label($value->notificado->ci); ?>
+
+                                                </div>
                                             </div>
                                         </div>
 
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Lugar'); ?>
+
+                                                    <?php echo Form::label($value->lugar); ?>
+
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <?php echo Form::label('Motivo'); ?>
+
+                                                    <?php echo Form::label($value->motivo); ?>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <?php echo $__env->make("Boton.show", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>

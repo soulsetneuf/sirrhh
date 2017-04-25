@@ -15,28 +15,7 @@
             			<h2 class="intro-text text-center">Planillas de sueldos</h2>
             			<hr>
             		</div>
-
-
-            		{!! Form::open(['route' => $ruta_controlador.'.index', 'method' => 'GET']) !!}
-            			<table class="table">
-            				<tr>
-            					<td>Gestion</td>
-            					<td>
-                      				{!! Form::select('gestion',config("options.gestiones"),null,['class' => 'form-control' , 'required' => 'required']) !!}
-            					</td>
-            					<td>
-            						Mes
-            					</td>
-            					<td>
-            							{!! Form::select('mes',config("options.meses"),null,['class' => 'form-control' , 'required' => 'required']) !!}
-            					</td>
-            					<td>
-            							<button type="submit" class="btn btn-primary">Buscar</button>	
-            					</td>
-            				</tr>
-            			</table>
-					{!! Form::close() !!}
-
+                    @include("Search.gestion_mes")
             		<div class="table table-responsive">
             			<table class="table table-striped">
             				<thead>
@@ -46,8 +25,7 @@
             						<th>Mes</th>
             						<th>Cantidad de personas</th>
             						<th>Total en planilla (Bs)</th>
-            						<th>Archivo</th>
-
+            						<th>Ubicacion fisica</th>
             					</tr>
             				</thead>
             					<tbody>
@@ -58,9 +36,7 @@
             							<td>{{ $value->mes }}</td>
             							<td>{{ $value->total_personal }}</td>
             							<td>{{ $value->monto_total }}</td>
-            							<td>
-            								<img src="enl_con/{{ $value->path }}" alt="No se encontro el archivo" style="width: 100px;height: 100px">
-            							</td>
+                                        <td>{{ $value->ubicacion_fisica }}</td>
             							<td>
                                             @include("Boton.list")
             							</td>
@@ -69,14 +45,8 @@
             					</tbody>
             				</table>
             			</div>
-            			<center>
-            				 {!! link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"])  !!}
-            			</center>
-
+                        @include("Boton.gestion_mes")
             		</div>
-
-
-
             </div>
         </div>
     </div>

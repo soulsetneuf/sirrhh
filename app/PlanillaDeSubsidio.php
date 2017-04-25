@@ -21,7 +21,21 @@ class PlanillaDeSubsidio extends Model
 		$this->attributes['path'] = $name;
 		\Storage::disk('local')->put($name, \File::get($path));
 	}
-	public function scopeListar($query,$gestion,$mes)
+    public function scopeGestion($query,$gestion)
+    {
+        if($gestion=="Todos")
+            return $query->where('gestion', 'like', "%");
+        else
+            return $query->where('gestion', '=', $gestion);
+    }
+    public function scopeMes($query,$mes)
+    {
+        if($mes=="Todos")
+            return $query->where('mes', 'like', "%");
+        else
+            return $query->where('mes', '=', $mes);
+    }
+    public function scopeListar($query,$gestion,$mes)
 	{
 		if($gestion!="todos")
 			if ($mes!="todos") {
@@ -32,7 +46,6 @@ class PlanillaDeSubsidio extends Model
 		else
 			return $query->where('mes', '=', $mes);
 	}
-
 	public function scopeReport($query)
 	{
 		return $query->where('gestion','=','1990');

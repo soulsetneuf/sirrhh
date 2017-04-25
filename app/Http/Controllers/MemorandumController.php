@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use sisRRHH\Memorandum;
 use sisRRHH\Http\Requests\MemorandumCreateRequest;
+use sisRRHH\Http\Requests\Memorandum2CreateRequest;
 use PDF;
 
 class MemorandumController extends Controller
@@ -47,8 +48,6 @@ class MemorandumController extends Controller
     public function pdfList($notificado_id,$tipo_de_memorandum_id)
     {
         PDF::setHeaderCallback(function($pdf) {
-            //$pdf->Cell(0, 27, '', 'B', false, 'R', 0, '', 0, false, 'T', 'M');
-
             $img = file_get_contents(asset("img/logo.png"));
             $pdf->Image('@'.$img,15,5,0,20);
 //            $pdf->Image('@'.$img, 0, 5, 0,20, 'png', 'https://www.minsalud.gob.bo', '', true,150, 'R', false, false, 0, false, false, false);
@@ -78,21 +77,10 @@ class MemorandumController extends Controller
 
         if (!(is_null($notificado_id)))
         {
-            PDF::writeHTML(\View::make
-            (
-                $this->ruta_vista.'.pdfList',
-                [
-                    "values"=>Memorandum::listar($notificado_id,$tipo_de_memorandum_id)->get(),
-                    "notificado_id"=>$notificado_id,
-                    "tipo_de_memorandum_id"=>$tipo_de_memorandum_id,
-                    "ruta_controlador"=>$this->ruta_controlador
-                ]
-            )->render(), true, false, true, false, ''
-            );
+            PDF::writeHTML(\View::make($this->ruta_vista.'.pdfList', ["values"=>Memorandum::listar($notificado_id,$tipo_de_memorandum_id)->get(), "notificado_id"=>$notificado_id, "tipo_de_memorandum_id"=>$tipo_de_memorandum_id, "ruta_controlador"=>$this->ruta_controlador])->render(), true, false, true, false, '');
         }
         else
         {
-            dd("afda");
             PDF::writeHTML(\View::make
             (
                 $this->ruta_vista.'.pdfList',
@@ -133,7 +121,7 @@ class MemorandumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MemorandumCreateRequest $request)
+    public function store(Memorandum2CreateRequest $request)
     {
         Memorandum::create($request->all());
         return redirect($this->ruta_controlador);
@@ -153,7 +141,6 @@ class MemorandumController extends Controller
     {
         PDF::setHeaderCallback(function($pdf) {
             //$pdf->Cell(0, 27, '', 'B', false, 'R', 0, '', 0, false, 'T', 'M');
-
             $img = file_get_contents(asset("img/logo.png"));
             $pdf->Image('@'.$img,15,5,0,20);
 //            $pdf->Image('@'.$img, 0, 5, 0,20, 'png', 'https://www.minsalud.gob.bo', '', true,150, 'R', false, false, 0, false, false, false);

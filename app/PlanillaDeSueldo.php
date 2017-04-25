@@ -22,14 +22,20 @@ class PlanillaDeSueldo extends Model
 		$this->attributes['path'] = $name;
 		\Storage::disk('local')->put($name, \File::get($path));
 	}
-	public function scopeGestion($query,$gestion)
-	{
-		return $query->where('gestion', '=', $gestion);
-	}
-	public function scopeMes($query,$mes)
-	{
-		return $query->where('mes', '=', $mes);
-	}
+    public function scopeGestion($query,$gestion)
+    {
+        if($gestion=="Todos")
+            return $query->where('gestion', 'like', "%");
+        else
+            return $query->where('gestion', '=', $gestion);
+    }
+    public function scopeMes($query,$mes)
+    {
+        if($mes=="Todos")
+            return $query->where('mes', 'like', "%");
+        else
+            return $query->where('mes', '=', $mes);
+    }
 	public function scopeListar($query,$gestion,$mes)
 	{
 		if($gestion!="todos")

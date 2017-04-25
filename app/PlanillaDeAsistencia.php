@@ -23,13 +23,18 @@ class PlanillaDeAsistencia extends Model
 	}
 	public function scopeGestion($query,$gestion)
 	{
-		return $query->where('gestion', '=', $gestion);
+        if($gestion=="Todos")
+            return $query->where('gestion', 'like', "%");
+        else
+            return $query->where('gestion', '=', $gestion);
 	}
 	public function scopeMes($query,$mes)
 	{
-		return $query->where('mes', '=', $mes);
+        if($mes=="Todos")
+            return $query->where('mes', 'like', "%");
+        else
+            return $query->where('mes', '=', $mes);
 	}
-
 	public function scopeListar($query,$gestion,$mes)
 	{
 		if($gestion!="todos")

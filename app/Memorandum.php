@@ -45,6 +45,8 @@ class Memorandum extends Model
     }
     public function scopeListar($query,$notificado_id,$tipo_memorandum)
     {
+        if($notificado_id=="Todos" && $tipo_memorandum=="Todos")
+            return $query;
         if($tipo_memorandum=="Todos")
             return $query->where('notificado_id', '=', $notificado_id);
         else
@@ -63,6 +65,7 @@ class Memorandum extends Model
             return $query->whereBetween("fecha_asignacion",array($fecha_inicio,$fecha_fin));
         }
         else
-            return $query->whereBetween("fecha_designacion",array($fecha_inicio,$fecha_fin))->where("tipo_de_memorandum_id","=",$tipo_memorandum);
+            return $query->whereBetween("fecha_designacion",array($fecha_inicio,$fecha_fin))
+                ->where("tipo_de_memorandum_id","=",$tipo_memorandum);
     }
 }

@@ -69,7 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     <a href="{{ url('/login') }}">Login</a>
-                    <!--<a href="{{ url('/register') }}">Registrar</a>-->
+                    <!--<a href="{{ url('/funcionarios') }}">Registrar</a>-->
                 </div>
             @endif
 
@@ -83,7 +83,7 @@
                     <a href="https://laracasts.com">Administrativa</a>
                     <a href="https://laravel-news.com">Técnica</a>
                     <a href="https://forge.laravel.com">Legal</a>
-                    <a href="/home">RRHH</a>
+                    <a href="{{url('home')}}">RRHH</a>
                     <a href="https://amdepo.org.bo/laravel/laravel">Contactos</a>
                 </div>
             </div>

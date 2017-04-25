@@ -82,7 +82,7 @@
                                         <th colspan="5"></th>
                                         <th>Total Prenatal : <br/>{{  $total_prenatal  }} bs</th>
                                         <th>Total Lactancia : <br/>{{  $total_lactancia  }} bs</th>
-                                        <th>Total : <br/>{{  $total  }} bs</th>
+                                        <th colspan="3">Total : <br/>{{  $total  }} bs</th>
                                     </tr>
             					</tbody>
             				</table>

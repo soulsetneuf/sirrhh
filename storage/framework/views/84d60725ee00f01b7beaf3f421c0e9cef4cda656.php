@@ -86,7 +86,7 @@
                                         <th colspan="5"></th>
                                         <th>Total Prenatal : <br/><?php echo e($total_prenatal); ?> bs</th>
                                         <th>Total Lactancia : <br/><?php echo e($total_lactancia); ?> bs</th>
-                                        <th>Total : <br/><?php echo e($total); ?> bs</th>
+                                        <th colspan="3">Total : <br/><?php echo e($total); ?> bs</th>
                                     </tr>
             					</tbody>
             				</table>

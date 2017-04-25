@@ -33,70 +33,70 @@
                                     </center>
 
                                 </div>
-                                <div class="col-lg-12">
-
                                     <div class="box">
-                                        <div class="form-group">
-                                            <div class="col-lg-6">
-                                                {!! Form::label('Tipo de memorandum', 'Tipo de memorandum') !!}:
-                                                {!! Form::label($value->memorandum->tipo) !!}
-                                            </div>
-                                            <div class="col-lg-6">
-                                                {!! Form::label('Numero de memorandum') !!}
-                                                {!! Form::label($value->numero_memorandum) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-lg-6">
-                                                {!! Form::label('Fecha asignacion del memorandum') !!}:
-                                                {!! Form::label($value->fecha_asignacion) !!}
-
-                                            </div>
-                                            <div class="col-lg-6">
-                                                {!! Form::label('Fecha fin de designacion') !!}:
-                                                {!! Form::label($value->fecha_designacion) !!}
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Tipo de memorandum', 'Tipo de memorandum') !!}:
+                                                    {!! Form::label($value->memorandum->tipo) !!}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Numero de memorandum') !!}
+                                                    {!! Form::label($value->numero_memorandum) !!}
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <div class="col-lg-6">
-                                                {!! Form::label('Numero de tomo') !!}:
-                                                {!! Form::label($value->numero_tomo) !!}
-                                            </div>
-                                            <div class="col-lg-6">
-                                                {!! Form::label('Ubicacion fisica') !!}
-                                                {!! Form::label($value->ubicacion_fisica) !!}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-lg-5">
-                                                {!! Form::label('Notificador/a') !!}
-                                                {!! Form::label($value->notificador->ci) !!}
-                                            </div>
-                                            <div class="col-lg-5">
-                                                {!! Form::label('Notificado/a') !!}
-                                                {!! Form::label($value->notificado->ci) !!}
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Fecha asignacion') !!}:
+                                                    {!! Form::label($value->fecha_asignacion) !!}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Fecha fin de designacion') !!}:
+                                                    {!! Form::label($value->fecha_designacion) !!}
+                                                </div>
                                             </div>
                                         </div>
-
-
-                                        <div class="form-group">
-                                            <div class="col-lg-5">
-                                                {!! Form::label('Lugar') !!}
-                                                {!! Form::label($value->lugar) !!}
-                                              </div>
-                                            <div class="col-lg-5">
-                                                {!! Form::label('Motivo') !!}
-                                                {!! Form::label($value->motivo) !!}
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Numero de tomo') !!}:
+                                                    {!! Form::label($value->numero_tomo) !!}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Ubicacion fisica') !!}
+                                                    {!! Form::label($value->ubicacion_fisica) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Notificador/a') !!}
+                                                    {!! Form::label($value->notificador->ci) !!}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Notificado/a') !!}
+                                                    {!! Form::label($value->notificado->ci) !!}
+                                                </div>
                                             </div>
                                         </div>
 
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Lugar') !!}
+                                                    {!! Form::label($value->lugar) !!}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    {!! Form::label('Motivo') !!}
+                                                    {!! Form::label($value->motivo) !!}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     @include("Boton.show")
-                                </div>
-
-
                             </div>
                         </div>
                     </div>

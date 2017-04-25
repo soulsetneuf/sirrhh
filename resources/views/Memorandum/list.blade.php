@@ -9,7 +9,6 @@
 
 
             	<div class="panel-body">
-                @include("Memorandum.menu")
             		<div class="col-lg-12">
             			<hr>
             			<h2 class="intro-text text-center">Memorandum</h2>
@@ -22,11 +21,20 @@
 						<tr>
 							<td>CI Notificado </td>
 							<td>
-								{!! Form::select('notificado_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @if(is_null($notificado_id))
+                                    {!! Form::select('notificado_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @else
+                                    {!! Form::select('notificado_id',sisRRHH\funcionario::pluck("ci","id"),$notificado_id,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @endif
 							</td>
                             <td>Tipo de memorandum </td>
                             <td>
-                                {!! Form::select('tipo_de_memorandum_id',array_add(sisRRHH\TipoDeMemorandum::pluck("tipo","id"),"Todos","Todos"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @if(is_null($notificado_id))
+                                    {!! Form::select('tipo_de_memorandum_id',array_add(sisRRHH\TipoDeMemorandum::pluck("tipo","id"),"Todos","Todos"),"Todos",['class' => 'form-control' , 'required' => 'required']) !!}
+                                @else
+                                    {!! Form::select('tipo_de_memorandum_id',array_add(sisRRHH\TipoDeMemorandum::pluck("tipo","id"),"Todos","Todos"),$tipo_de_memorandum_id,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @endif
+
                             </td>
 							<td>
 								<button type="submit" class="btn btn-primary">Buscar</button>
@@ -40,21 +48,22 @@
             				<thead>
             					<tr>
             						<th>#</th>
-            						<th>Numero Memorandum</th>
+                                    <th>Funcionario</th>
+                                    <th>Tipo de Memorandum</th>
+                                    <th>Ubicacion Fisica</th>
             						<th>Fecha Asignacion</th>
             						<th>Notificador</th>
-            						<th>Notificado</th>
-
             					</tr>
             				</thead>
             					<tbody>
             						@foreach ($values as $value)
             						<tr class="success">
             							<td>{{ $value->id }}</td>
-            							<td>{{ $value->numero_memorandum }}</td>
+                                        <td>{{ $value->notificado->ci }}</td>
+                                        <td>{{ $value->memorandum->tipo }}</td>
+                                        <td>{{ $value->ubicacion_fisica }}</td>
             							<td>{{ $value->fecha_asignacion }}</td>
             							<td>{{ $value->notificador->ci }}</td>
-										<td>{{ $value->notificado->ci }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 {!! link_to_route($ruta_controlador.'.show',$title="Ver",$parameters=$value->id, $attributes=["class"=>"btn btn-success btn-xs"])  !!}
@@ -74,6 +83,15 @@
             				</table>
             			</div>
             			<center>
+                            @if(is_null($notificado_id) && is_null($tipo_de_memorandum_id))
+                                {!! link_to_route($ruta_controlador.'.list.pdf',$title="Impresion",
+                                $parameters=["notificado_id"=>"Todos","tipo_de_memorandum_id"=>"Todos"],
+                                $attributes=["class"=>"btn btn-default"])  !!}
+                            @else
+                                {!! link_to_route($ruta_controlador.'.list.pdf',$title="Impresion",
+                                $parameters=["notificado_id"=>$notificado_id,"tipo_de_memorandum_id"=>$tipo_de_memorandum_id],
+                                $attributes=["class"=>"btn btn-default"])  !!}
+                            @endif
             				 {!! link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"])  !!}
             			</center>
 
