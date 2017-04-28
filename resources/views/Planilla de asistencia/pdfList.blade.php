@@ -1,9 +1,9 @@
 <style>
-    td
-    {
+    td {
         text-align: center;
     }
-    th{
+
+    th {
         text-align: center;
         font-weight: bold;
     }
@@ -15,11 +15,11 @@
 </table>
 <br/>
 
-    {{ Form::label("Gestion: $gestion") }}
-    {{ Form::label("Mes: $mes") }}
+{{ Form::label("Gestion: $gestion") }}
+{{ Form::label("Mes: $mes") }}
 <br/>
 <br/>
-<?php $nro=0; ?>
+<?php $nro = 0; ?>
 <table border="1">
     <thead>
     <tr>

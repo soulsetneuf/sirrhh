@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-            <div class="panel panel-default">
-            	<div class="panel-body">
             		<div class="col-lg-12">
             			<hr>
             			<h2 class="intro-text text-center">Subsidios</h2>
@@ -90,14 +85,5 @@
             			<center>
             				 {!! link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"])  !!}
             			</center>
-
-            		</div>
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 

@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-body">
                 @if(session()->has('msj'))
 				<div class="alert alert-success" role="alert">
 				{{ session('msj') }}
@@ -17,16 +12,7 @@
 				</div>
 				@endif
 				 {!! Form::model($value,['route' => [$ruta_controlador.'.update',$value->id], 'method' => 'put']) !!}
-                  @include($ruta_vista.'.form') 
-					<center>
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</center><br>	
-
+                  @include($ruta_vista.'.form')
 				{!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 

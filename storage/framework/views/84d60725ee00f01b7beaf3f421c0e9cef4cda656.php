@@ -1,9 +1,4 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-            <div class="panel panel-default">
-            	<div class="panel-body">
             		<div class="col-lg-12">
             			<hr>
             			<h2 class="intro-text text-center">Subsidios</h2>
@@ -95,15 +90,6 @@
             				 <?php echo link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"]); ?>
 
             			</center>
-
-            		</div>
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
 <?php $__env->stopSection(); ?>
 
 

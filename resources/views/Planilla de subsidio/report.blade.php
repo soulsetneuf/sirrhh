@@ -4,14 +4,6 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 @include ('footer')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-              
-
-
-            	<div class="panel-body">
             		 @include("Planilla de subsidio.menu")
             		<div class="col-lg-12">
             			<hr>
@@ -89,14 +81,4 @@
 							console.log(nombre); // bar
 							console.log(mes); // 29
 						</script>
-
-
-            		</div>
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

@@ -159,9 +159,9 @@ class funcionarios extends Controller
      */
     public function edit($id)
     {
-        $funcionario=funcionario::find($id);
-        return view('modificarfun')->with(['funcionario'=>$funcionario]);
+        return \View::make($this->ruta_vista.'.update',["value"=>funcionario::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista]);
     }
+
 
     /**
      * Update the specified resource in storage.

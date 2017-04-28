@@ -74,7 +74,6 @@ class MemorandumController extends Controller
         PDF::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         PDF::AddPage('L', 'Letter');
 
-
         if (!(is_null($notificado_id)))
         {
             PDF::writeHTML(\View::make($this->ruta_vista.'.pdfList', ["values"=>Memorandum::listar($notificado_id,$tipo_de_memorandum_id)->get(), "notificado_id"=>$notificado_id, "tipo_de_memorandum_id"=>$tipo_de_memorandum_id, "ruta_controlador"=>$this->ruta_controlador])->render(), true, false, true, false, '');
@@ -121,7 +120,7 @@ class MemorandumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Memorandum2CreateRequest $request)
+    public function store(MemorandumCreateRequest $request)
     {
         Memorandum::create($request->all());
         return redirect($this->ruta_controlador);
@@ -167,7 +166,19 @@ class MemorandumController extends Controller
         PDF::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         PDF::AddPage('L', 'Letter');
 
-        PDF::writeHTML(\View::make($this->ruta_vista.'.pdf',["value"=>Memorandum::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista])->render(), true, false, true, false, '');
+
+
+        //dd(asset(Memorandum::find($id)->path));
+        //dd(Memorandum::find($id)->path);
+        $path=asset("enl_con/".Memorandum::find($id)->path);
+        if (!@file_exists($path)) {
+            // try to encode spaces on filename
+            $path = str_replace(' ', '%20', $path);
+             }
+        $img = file_get_contents($path);
+        PDF::Image('@'.$img);
+
+        //PDF::writeHTML(\View::make($this->ruta_vista.'.pdf',["value"=>Memorandum::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista])->render(), true, false, true, false, '');
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-              
-            	<div class="panel-body">
                   @include("Planilla de subsidio.menu")
             		<div class="col-lg-12">
             			<hr>
@@ -23,7 +17,7 @@
             						<th>Mes</th>
             						<th>Beneficiarios</th>
             						<th>Monto Total</th>
-                                    <th>Ubicacion fisica</th>
+                                    <th colspan="2">Ubicacion fisica</th>
             					</tr>
             				</thead>
             					<tbody>
@@ -44,9 +38,4 @@
             				</table>
             			</div>
                     @include("Boton.gestion_mes")
-            		</div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

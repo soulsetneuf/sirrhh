@@ -1,9 +1,4 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-body">
                 <?php if(session()->has('msj')): ?>
 				<div class="alert alert-success" role="alert">
 				<?php echo e(session('msj')); ?>
@@ -17,27 +12,14 @@
 				<?php endif; ?>
 				 <?php echo Form::open(['route' => $ruta_controlador.'.store', 'method' => 'post', 'novalidate']); ?>
 
-
-                  <?php echo $__env->make($ruta_vista.'.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
-
-					<center>
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</center><br>		
-
+                  <?php echo $__env->make($ruta_vista.'.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 				<?php echo Form::close(); ?>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 <script>
 	$(document).ready(function(){
 		$('#funcionario_id').change(function(){
-			$.get("<?php echo e(url('dropdown')); ?>",
+			$.get("<?php echo e(url('parentesco')); ?>",
 			{ option: $(this).val() },
 			function(data) {
 				$('#familiar_id').empty();
@@ -48,7 +30,6 @@
 		});
 	});		
 </script>
-
 <?php $__env->stopSection(); ?>
 
 

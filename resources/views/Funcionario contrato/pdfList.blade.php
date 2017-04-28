@@ -1,9 +1,9 @@
 <style>
-    td
-    {
+    td {
         text-align: center;
     }
-    th{
+
+    th {
         text-align: center;
         font-weight: bold;
     }
@@ -26,7 +26,7 @@
 @endif
 <br/>
 <br/>
-<?php $nro=0; ?>
+<?php $nro = 0; ?>
 <table border="1">
     <thead>
     <tr>

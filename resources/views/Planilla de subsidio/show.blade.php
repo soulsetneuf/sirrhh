@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-body">
 					@if(session()->has('msj'))
 					<div class="alert alert-success" role="alert">
 						{{ session('msj') }}
@@ -16,10 +11,6 @@
 						Error al guardar los Datos.
 					</div>
 					@endif
-
-					<div class="panel panel-default">
-						<div class="panel-body">
-								
 							<div class="col-lg-12">
 								<hr>
 								<h2 class="intro-text text-center">Planilla de subsidios</h2>
@@ -31,11 +22,7 @@
 											<img src='{{ asset("enl_con/".$value->path) }}' alt="No se encontro el archivo" style="width: 200px;height: 200px">
 										</div>
 									</center>
-
 									</div>
-							<div class="col-lg-12">
-
-								<div class="box">
 									<div class="form-group">
 										<div class="col-lg-6">
 											{!! Form::label('Monto total en planilla') !!}:
@@ -54,31 +41,17 @@
 
 										</div>
 									</div>
-
-
 									<div class="form-group">
-										<div class="col-lg-5">
+										<div class="col-lg-6">
 											{!! Form::label('Mes', 'Mes') !!}:
 											{!! Form::label($value->mes) !!}
 										</div>
-										<div class="col-lg-5">
+										<div class="col-lg-6">
 											{!! Form::label('Gestion', 'Gestion') !!}:
 											{!! Form::label($value->gestion) !!}
 										</div>
 									</div>
-								</div>
-                                @include("Boton.show")
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection	
-       
-                ,"beneficiarios"
-           
+                    <div class="col-md-12">
+                        @include("Boton.show")
+                    </div>
+@endsection

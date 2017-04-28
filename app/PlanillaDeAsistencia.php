@@ -46,4 +46,8 @@ class PlanillaDeAsistencia extends Model
 		else
 			return $query->where('mes', '=', $mes);
 	}
+    public function scopePeriodo($query,$gestion,$mes)
+    {
+        return $query->where('mes', '=', $mes)->where('gestion', '=', $gestion)->exists();
+    }
 }

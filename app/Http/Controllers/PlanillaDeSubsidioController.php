@@ -4,6 +4,7 @@ namespace sisRRHH\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use sisRRHH\PlanillaDeAsistencia;
 use sisRRHH\PlanillaDeSubsidio;
 
 
@@ -165,7 +166,15 @@ class PlanillaDeSubsidioController extends Controller
         PDF::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         PDF::AddPage('L', 'Letter');
 
-        PDF::writeHTML(\View::make($this->ruta_vista.'.pdf',["value"=>PlanillaDeSubsidio::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista])->render(), true, false, true, false, '');
+        //PDF::writeHTML(\View::make($this->ruta_vista.'.pdf',["value"=>PlanillaDeSubsidio::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista])->render(), true, false, true, false, '');
+        $path=asset("enl_con/".PlanillaDeSubsidio::find($id)->path);
+        if (!@file_exists($path)) {
+            // try to encode spaces on filename
+            $path = str_replace(' ', '%20', $path);
+        }
+        $img = file_get_contents($path);
+        PDF::Image('@'.$img);
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -191,7 +200,15 @@ class PlanillaDeSubsidioController extends Controller
      */
     public function store(PlanillaDeSubsidiosCreateRequest $request)
     {
-        PlanillaDeSubsidio::create($request->all());
+        $gestion=$request->input("gestion");
+        $mes=$request->input("mes");
+        if(PlanillaDeAsistencia::where('mes', '=', $mes)->where('gestion', '=', $gestion)->exists())
+        {
+            $request->session()->flash('msj', 'El campo mes y gestion ya han sido registrados anteriormente');
+            return redirect($this->ruta_controlador."/create");
+        }
+        else
+            PlanillaDeAsistencia::create($request->all());
         return redirect($this->ruta_controlador);
     }
 

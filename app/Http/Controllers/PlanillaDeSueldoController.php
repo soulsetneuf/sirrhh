@@ -162,7 +162,15 @@ class PlanillaDeSueldoController extends Controller
         PDF::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         PDF::AddPage('L', 'Letter');
 
-        PDF::writeHTML(\View::make($this->ruta_vista.'.pdf',["value"=>PlanillaDeSueldo::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista])->render(), true, false, true, false, '');
+        //PDF::writeHTML(\View::make($this->ruta_vista.'.pdf',["value"=>PlanillaDeSueldo::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista])->render(), true, false, true, false, '');
+        $path=asset("enl_con/".PlanillaDeSueldo::find($id)->path);
+        if (!@file_exists($path)) {
+            // try to encode spaces on filename
+            $path = str_replace(' ', '%20', $path);
+        }
+        $img = file_get_contents($path);
+        PDF::Image('@'.$img);
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -190,7 +198,15 @@ class PlanillaDeSueldoController extends Controller
      */
     public function store(PlanillaDeSueldoCreateRequest $request)
     {
-        PlanillaDeSueldo::create($request->all());
+        $gestion=$request->input("gestion");
+        $mes=$request->input("mes");
+        if(PlanillaDeSueldo::where('mes', '=', $mes)->where('gestion', '=', $gestion)->exists())
+        {
+            $request->session()->flash('msj', 'El campo mes y gestion ya han sido registrados anteriormente');
+            return redirect($this->ruta_controlador."/create");
+        }
+        else
+            PlanillaDeSueldo::create($request->all());
         return redirect($this->ruta_controlador);
     }
 
