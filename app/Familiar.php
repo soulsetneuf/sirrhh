@@ -19,4 +19,8 @@ class Familiar extends Model
     {
         return $this->hasOne('sisRRHH\Persona', 'id', 'familiar_id');
     }
+    public function scopeId($query,$funcionario_id)
+    {
+        return $query->where("funcionario_id","=",$funcionario_id);
+    }
 }

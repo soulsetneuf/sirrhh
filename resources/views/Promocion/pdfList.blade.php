@@ -19,11 +19,23 @@
             @if($tipo_promocion=="Todos")
                 Tipo de contrato: Todos
             @else
-                Tipo de contrato: {{ \sisRRHH\TipoDeContrato::find($tipo_promocion)->tipo  }}
+                @if($tipo_promocion=="Ninguno")
+                    Tipo de contrato: Ninguno
+                @else
+                    Tipo de contrato: {{ \sisRRHH\TipoDeContrato::find($tipo_promocion)->tipo  }}
+                @endif
             @endif
         </label>
         <label>
-            Tipo de memorandum: {{ $tipo_memorandum }}
+            @if($tipo_promocion=="Todos")
+                 Tipo de memorandum: Todos
+            @else
+                @if($tipo_promocion=="Ninguno")
+                    Tipo de memorandum: Ninguno
+                @else
+                    Tipo de contrato: {{ \sisRRHH\TipoDeMemorandum::find($tipo_memorandum)->tipo  }}
+                @endif
+            @endif
         </label>
         <label>
             Fecha Inicio: {{ $fecha_inicio }}

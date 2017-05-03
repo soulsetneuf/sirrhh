@@ -9,11 +9,15 @@
 						<div class="col-lg-6">
 							{!! Form::label('Funcionario') !!}
 							{!! Form::select('funcionario_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'true',"id"=>"funcionario_id"]) !!}
+                            {!! link_to_route('funcionarios.create',$title="Nuevo funcionario",$parameters="", $attributes=[""])  !!}
 						</div>
 						<br>
 						<div class="col-lg-6">
 							{!! Form::label('Familiar') !!}
-							{!! Form::select('familiar_id',sisRRHH\Familiar::pluck("tipo_parentesco","id"),null,['class' => 'form-control' , 'required' => 'true',"id"=>"familiar_id"]) !!}
+                            {!! Form::select('familiar_id',
+                                DB::table('familiares')->join('personas', 'personas.id', '=', 'familiares.familiar_id')->pluck("personas.ci","familiares.id"),
+							    null,['class' => 'form-control' , 'required' => 'true',"id"=>"familiar_id"]) !!}
+                            {!! link_to_route('familiares.create',$title="Nuevo familiar",$parameters="", $attributes=[""])  !!}
                       </div>
 					</div>
 

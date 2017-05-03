@@ -1,6 +1,6 @@
 <div class="form-group">
     <div class="col-lg-2">
-        {!! link_to_route($ruta_controlador.'.index',$title="Atras",$parameters="", $attributes=["class"=>"btn btn-default"])  !!}
+        {{ Html::link(URL::previous(), 'Atras', $attributes=["class"=>"btn btn-default"], true)}}
     </div>
     <div class="col-lg-6">
     </div>

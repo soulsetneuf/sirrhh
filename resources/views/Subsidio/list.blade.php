@@ -11,7 +11,11 @@
                         <tr>
                             <td>Tipo de subsidio </td>
                             <td>
-                                {!! Form::select('tipo_subsidio',array_add(config("options.tipo_subsidio"),"Todos","Todos"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @if(is_null($tipo_subsidio))
+                                    {!! Form::select('tipo_subsidio',array_add(config("options.tipo_subsidio"),"Todos","Todos"),null,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @else
+                                    {!! Form::select('tipo_subsidio',array_add(config("options.tipo_subsidio"),"Todos","Todos"),$tipo_subsidio,['class' => 'form-control' , 'required' => 'required']) !!}
+                                @endif
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Buscar</button>
@@ -82,7 +86,16 @@
             					</tbody>
             				</table>
             			</div>
-            			<center>
+                    <center>
+                        @if(is_null($tipo_subsidio))
+                            {!! link_to_route($ruta_controlador.'.list.pdf',$title="Impresion",
+                            $parameters=["tipo_subsidio"=>"Todos"],
+                            $attributes=["class"=>"btn btn-default"])  !!}
+                        @else
+                            {!! link_to_route($ruta_controlador.'.list.pdf',$title="Impresion",
+                            $parameters=["tipo_subsidio"=>$tipo_subsidio],
+                            $attributes=["class"=>"btn btn-default"])  !!}
+                        @endif
             				 {!! link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"])  !!}
             			</center>
 @endsection

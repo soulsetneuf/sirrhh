@@ -2,9 +2,11 @@
 
 namespace sisRRHH\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use sisRRHH\Subsidio;
 use sisRRHH\Http\Requests\SubsidioCreateRequest;
+use PDF;
 
 class SubsidioController extends Controller
 {
@@ -23,6 +25,7 @@ class SubsidioController extends Controller
             return \View::make($this->ruta_vista.'.list',
                 [
                     "values"=>Subsidio::tiposubsidio($tipo_subsidio)->get(),
+                    "tipo_subsidio"=>$tipo_subsidio,
                     "total"=>Subsidio::tiposubsidio($tipo_subsidio)->sum('monto'),
                     "total_lactancia"=>Subsidio::tiposubsidio($tipo_subsidio)->where("tipo_subsidio","=", "Lactancia")->sum('monto'),
                     "total_prenatal"=>Subsidio::tiposubsidio($tipo_subsidio)->where("tipo_subsidio","=", "Prenatal")->sum('monto'),
@@ -36,6 +39,7 @@ class SubsidioController extends Controller
             return \View::make($this->ruta_vista.'.list',
                 [
                     "values"=>Subsidio::all(),
+                    "tipo_subsidio"=>null,
                     "total"=>Subsidio::sum('monto'),
                     "total_prenatal"=>Subsidio::where("tipo_subsidio","=", "Prenatal")->sum('monto'),
                     "total_lactancia"=>Subsidio::where("tipo_subsidio","=","Lactancia")->sum('monto'),
@@ -86,6 +90,77 @@ class SubsidioController extends Controller
         PDF::Output('estableciminetos.pdf','I');
 
         //return \View::make($this->ruta_vista.'.pdf',["value"=>Memorandum::find($id),"ruta_controlador"=>$this->ruta_controlador,"ruta_vista"=>$this->ruta_vista]);
+    }
+    public function pdfList($tipo_subsidio)
+    {
+
+        PDF::setHeaderCallback(function($pdf) {
+            $img = file_get_contents(asset("img/logo.png"));
+            $pdf->Image('@'.$img,15,5,0,20);
+//            $pdf->Image('@'.$img, 0, 5, 0,20, 'png', 'https://www.minsalud.gob.bo', '', true,150, 'R', false, false, 0, false, false, false);
+            $pdf->SetFont('helvetica', 'I', 8);
+            $pdf->Text(240,5,"Fecha de impresión:".Carbon::now()->format("d/m/Y"),'R');
+
+            $pdf->SetFont('helvetica', 'B', 20);
+            $pdf->Text(70,10,'Planilla de asistencia','R');
+            $pdf->SetFont('helvetica', 'K', 10);
+        });
+        PDF::setFooterCallback(function($pdf) {
+            $pdf->SetY(-15);
+            $pdf->SetFont('helvetica', 'I', 8);
+            $pdf->Cell(0, 10, 'Pagina '.$pdf->getAliasNumPage().'/'.$pdf->getAliasNbPages(), 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+            $pdf->Text(20,-12,"Usuario: ".\Auth::user()->funcionario->nombre_completo,'R');
+            $pdf->Text(100,-12,"Provincia: ".\sisRRHH\Institucion::find(1)->provincia->nombre,'R');
+            $pdf->Text(180,-12,"Municipio: ".\sisRRHH\Institucion::find(1)->municipio->nombre,'R');
+        });
+        PDF::SetTitle('Reportes');
+        PDF::SetSubject('Reporte de sistema');
+        PDF::SetMargins(15, 30, 15);
+        PDF::SetFontSubsetting(false);
+        PDF::SetFontSize('10px');
+        PDF::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        PDF::AddPage('L', 'Letter');
+
+        if (!(is_null($tipo_subsidio)))
+        {
+            PDF::writeHTML
+            (
+                \View::make
+                (
+                    $this->ruta_vista.'.pdfList',
+                    [
+                        "values"=>Subsidio::tiposubsidio($tipo_subsidio)->get(),
+                        "tipo_subsidio"=>$tipo_subsidio,
+                        "total"=>Subsidio::tiposubsidio($tipo_subsidio)->sum('monto'),
+                        "total_lactancia"=>Subsidio::tiposubsidio($tipo_subsidio)->where("tipo_subsidio","=", "Lactancia")->sum('monto'),
+                        "total_prenatal"=>Subsidio::tiposubsidio($tipo_subsidio)->where("tipo_subsidio","=", "Prenatal")->sum('monto'),
+                        "numero_funcionarios"=>Subsidio::tiposubsidio($tipo_subsidio)->count(),
+                        "ruta_controlador"=>$this->ruta_controlador
+                    ]
+                )->render(), true, false, true, false, ''
+            );
+        }
+        else
+            PDF::writeHTML
+            (
+                \View::make
+                (
+                    $this->ruta_vista.'.pdfList',
+                    [
+                        "values"=>Subsidio::all(),
+                        "tipo_subsidio"=>null,
+                        "total"=>Subsidio::sum('monto'),
+                        "total_prenatal"=>Subsidio::where("tipo_subsidio","=", "Prenatal")->sum('monto'),
+                        "total_lactancia"=>Subsidio::where("tipo_subsidio","=","Lactancia")->sum('monto'),
+                        "numero_funcionarios"=>Subsidio::count(),
+                        "ruta_controlador"=>$this->ruta_controlador
+                    ]
+                )->render(), true, false, true, false, ''
+            );
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        PDF::lastPage();
+        PDF::Output('estableciminetos.pdf','D');
     }
 
     /**

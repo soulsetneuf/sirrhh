@@ -10,8 +10,13 @@
                         <tr>
                             <td>Tipo de subsidio </td>
                             <td>
-                                <?php echo Form::select('tipo_subsidio',array_add(config("options.tipo_subsidio"),"Todos","Todos"),null,['class' => 'form-control' , 'required' => 'required']); ?>
+                                <?php if(is_null($tipo_subsidio)): ?>
+                                    <?php echo Form::select('tipo_subsidio',array_add(config("options.tipo_subsidio"),"Todos","Todos"),null,['class' => 'form-control' , 'required' => 'required']); ?>
 
+                                <?php else: ?>
+                                    <?php echo Form::select('tipo_subsidio',array_add(config("options.tipo_subsidio"),"Todos","Todos"),$tipo_subsidio,['class' => 'form-control' , 'required' => 'required']); ?>
+
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Buscar</button>
@@ -86,7 +91,18 @@
             					</tbody>
             				</table>
             			</div>
-            			<center>
+                    <center>
+                        <?php if(is_null($tipo_subsidio)): ?>
+                            <?php echo link_to_route($ruta_controlador.'.list.pdf',$title="Impresion",
+                            $parameters=["tipo_subsidio"=>"Todos"],
+                            $attributes=["class"=>"btn btn-default"]); ?>
+
+                        <?php else: ?>
+                            <?php echo link_to_route($ruta_controlador.'.list.pdf',$title="Impresion",
+                            $parameters=["tipo_subsidio"=>$tipo_subsidio],
+                            $attributes=["class"=>"btn btn-default"]); ?>
+
+                        <?php endif; ?>
             				 <?php echo link_to_route($ruta_controlador.'.create',$title="Nuevo",$parameters="", $attributes=["class"=>"btn btn-success"]); ?>
 
             			</center>

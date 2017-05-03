@@ -17,8 +17,29 @@ class FamiliarController extends Controller
     var $ruta_controlador="familiares";
     public function index(Request $request)
     {
-        return \View::make($this->ruta_vista.'.list',
-            ["values"=>Familiar::all(),"ruta_controlador"=>$this->ruta_controlador]);
+        $funcionario_id=$request->get("funcionario_id");
+        if (!(is_null($funcionario_id)))
+        {
+            return \View::make(
+                $this->ruta_vista.'.list',
+                [
+                    "values"=>Familiar::id($funcionario_id)->get(),
+                    "funcionario_id"=>$funcionario_id,
+                    "ruta_controlador"=>$this->ruta_controlador
+                ]
+            );
+        }
+        else
+        {
+            return \View::make(
+                $this->ruta_vista.'.list',
+                [
+                    "values"=>Familiar::all(),
+                    "funcionario_id"=>null,
+                    "ruta_controlador"=>$this->ruta_controlador
+                ]
+            );
+        }
     }
     public function report(Request $request)
     {
