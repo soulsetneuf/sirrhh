@@ -22,7 +22,7 @@ class CreateMemorandumTable extends Migration
                 $table->integer("numero_memorandum");
                 $table->date('fecha_asignacion');
                 $table->date('fecha_designacion');
-                $table->integer("numero_tomo");
+                $table->string("numero_tomo");
                 $table->string("ubicacion_fisica");
                 $table->integer("notificador_id")->unsigned();
                 $table->foreign('notificador_id')->references('id')->on('funcionarios') ->onDelete('cascade');

@@ -32,16 +32,16 @@
             @else
                 @if($tipo_promocion=="Ninguno")
                     Tipo de memorandum: Ninguno
-                @else
+                @else|
                     Tipo de contrato: {{ \sisRRHH\TipoDeMemorandum::find($tipo_memorandum)->tipo  }}
                 @endif
             @endif
         </label>
         <label>
-            Fecha Inicio: {{ $fecha_inicio }}
+            Fecha Inicio: {{ substr($fecha_inicio,0,10) }}
         </label>
         <label>
-            Fecha Fin: {{ $fecha_fin }}
+            Fecha Fin: {{ substr($fecha_fin,0,10) }}
         </label>
 <br/>
 <br/>

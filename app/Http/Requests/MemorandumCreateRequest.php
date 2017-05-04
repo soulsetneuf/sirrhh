@@ -25,7 +25,7 @@ class MemorandumCreateRequest extends FormRequest
     {
         return [
             "path"=>"required|mimes:jpeg,bmp,png'",
-            "numero_tomo"=>"integer",
+            "numero_tomo"=>"required",
             "numero_memorandum"=>"integer",
             'fecha_asignacion' => 'required|date|date_format:Y-m-d|before:fecha_designacion',
         ];
