@@ -122,4 +122,11 @@ return [
         "Prenatal"=>"Prenatal",
         "Lactancia"=>"Lactancia",
     ],
+    "acensos_decensos"=>[
+        "Ascenso"=>"Ascenso",
+        "Decenso"=>"Decenso",
+        "Mantiene"=>"Mantiene",
+        "Despido"=>"Despido",
+        "Renuncia"=>"Renuncia",
+    ],
 ];

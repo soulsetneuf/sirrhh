@@ -16,10 +16,11 @@ class Memorandum extends Model
                 ,'fecha_designacion'
                 ,"numero_tomo"
                 ,"ubicacion_fisica"
-                ,"notificador_id"
                 ,"notificado_id"
                 ,"lugar"
-                ,"motivo"];
+                ,"motivo"
+                ,"acensos_decensos"
+    ];
 
     //Guardar direccion de imagen path
     public function setPathAttribute($path){

@@ -39,7 +39,9 @@ class funcionario extends Model
             'cor_per',
             'cor_ins',
             'num_cue',
-            'ant_ext'
+            'ant_ext',
+            'cargo',
+            'tipo_funcionario_id'
     ];
     public function familiares() {
         return $this->hasMany('sisRRHH\Familiar');
@@ -56,5 +58,8 @@ class funcionario extends Model
             return $query;
         else
             return $query->where("id","=",$funcionario_id);
+    }
+    public function funcionario() {
+        return $this->hasOne('sisRRHH\TipoFuncionario', 'id', 'tipo_funcionario_id');
     }
 }

@@ -32,6 +32,8 @@
                 <th>#</th>
                 <th>CI</th>
                 <th>Nombre completo</th>
+                <th>Tipo funcionario</th>
+                <th>Cargo</th>
                 <th>Ocupacion</th>
             </tr>
             </thead>
@@ -41,6 +43,8 @@
                     <td>{{ $value->id }}</td>
                     <td>{{ $value->ci }}</td>
                     <td>{{ $value->nombre_completo }}</td>
+                    <td>{{ $value->funcionario->tipo }}</td>
+                    <td>{{ $value->cargo }}</td>
                     <td>{{ $value->pro_ocu }}</td>
                     <td>
                         @include("Boton.list")

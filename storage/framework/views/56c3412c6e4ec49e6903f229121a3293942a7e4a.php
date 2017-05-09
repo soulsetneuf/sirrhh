@@ -1,3 +1,4 @@
+
 <div class="col-lg-12">
     <hr>
     <h2 class="intro-text text-center">Memorandum</h2>
@@ -8,7 +9,7 @@
         <div class="col-lg-6">
             <?php echo Form::label('Tipo de memorandum', 'Tipo de memorandum'); ?>
 
-            <?php echo Form::select('tipo_de_memorandum_id',sisRRHH\TipoDeMemorandum::pluck("tipo","id"),null,['class' => 'form-control' , 'required' => 'required']); ?>
+            <?php echo Form::select('tipo_de_memorandum_id',sisRRHH\TipoDeMemorandum::pluck("tipo","id"),null,['class' => 'form-control' ,'id'=>'tipo_de_memorandum_id', 'required' => 'required']); ?>
 
             <?php echo link_to_route('tipos_de_memorandum.create',$title="Nuevo memorandum",$parameters="", $attributes=[""]); ?>
 
@@ -22,6 +23,14 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-12">
+        <?php echo Form::label('Ascenso/Decenso'); ?>
+
+        <?php echo Form::select("acensos_decensos",config("options.acensos_decensos"),null,['class' => 'form-control' , 'required' => 'required']); ?>
+
+    </div>
+</div>
+<div class="row">
     <div class="form-group">
         <div class="col-lg-6">
             <?php echo Form::label('Fecha asignacion del memorandum'); ?>
@@ -29,12 +38,12 @@
             <?php echo Form::date('fecha_asignacion', \Carbon\Carbon::now()->format('Y-m-d'),['class' => 'form-control' , 'required' => 'required',"min"=>"1980-01-01","max"=>\Carbon\Carbon::now()->format('Y-m-d')]); ?>
 
         </div>
-        <div class="col-lg-6">
-            <?php echo Form::label('Fecha fin de designacion'); ?>
+            <div class="col-lg-6" id="content">
+                <?php echo Form::label('Fecha fin de designacion'); ?>
 
-            <?php echo Form::date('fecha_designacion', \Carbon\Carbon::now()->format('Y-m-d'),['class' => 'form-control' , 'required' => 'required',"min"=>"1980-01-01"]); ?>
+                <?php echo Form::date('fecha_designacion', \Carbon\Carbon::now()->format('Y-m-d'),['class' => 'form-control' , 'required' => 'required',"min"=>"1980-01-01"]); ?>
 
-        </div>
+            </div>
     </div>
 </div>
 <div class="row">
@@ -51,7 +60,6 @@
 
             <?php echo Form::text('ubicacion_fisica', null, ['class' => 'form-control' , 'required' => 'required']); ?>
 
-
         </div>
     </div>
 </div>
@@ -60,13 +68,13 @@
         <div class="col-lg-6">
             <?php echo Form::label('Notificador/a'); ?>
 
-            <?php echo Form::select('notificador_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'required']); ?>
+            <?php echo Form::text("rrhh","Unidad de Recursos Humanos",['class' => 'form-control','readonly'=>true]); ?>
 
         </div>
         <div class="col-lg-6">
             <?php echo Form::label('Notificado/a'); ?>
 
-            <?php echo Form::select('notificado_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' , 'required' => 'required']); ?>
+            <?php echo Form::select('notificado_id',sisRRHH\funcionario::pluck("ci","id"),null,['class' => 'form-control' ,'id'=>'notificado_id' ,'required' => 'required']); ?>
 
         </div>
     </div>
@@ -99,3 +107,29 @@
 </div>
 <br/>
 <?php echo $__env->make("Boton.boton", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#notificado_id').change(function(){
+            $.get("<?php echo e(url('tipo_funcionario')); ?>",
+                    { option: $(this).val() },
+                    function(data) {
+                        console.log(data);
+                        if (data=="Permanente")
+                            document.getElementById("content").style.display = "none";
+                        else
+                            document.getElementById("content").style.display = "block";
+                    });
+        });
+        $('#tipo_de_memorandum_id').change(function(){
+            var e = document.getElementById("tipo_de_memorandum_id");
+            var data=e.options[e.selectedIndex].text;
+            if (data=="Llamada de atencion" || data=="Memorandum de agradacimiento" || data=="Continuidad")
+                document.getElementById("content").style.display = "none";
+            else
+                document.getElementById("content").style.display = "block";
+        });
+    });
+</script>

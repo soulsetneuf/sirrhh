@@ -3,6 +3,8 @@
 namespace sisRRHH\Http\Controllers;
 
 use Illuminate\Http\Request;
+use sisRRHH\Http\Requests\PersonaCreateRequest;
+use sisRRHH\Http\Requests\PersonaUpdateRequest;
 use sisRRHH\Persona;
 
 
@@ -38,7 +40,7 @@ class PersonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonaCreateRequest $request)
     {
         Persona::create($request->all());
         return redirect($this->ruta_controlador);
@@ -73,7 +75,7 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PersonaUpdateRequest $request, $id)
     {
         Persona::find($id)->fill($request->all())->save();
         return redirect($this->ruta_controlador);

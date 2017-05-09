@@ -46,6 +46,7 @@
                 <th>#</th>
                 <th>Funcionario</th>
                 <th>Tipo de Memorandum</th>
+                <th>Acensos Decensos</th>
                 <th>Ubicacion Fisica</th>
                 <th>Fecha Asignacion</th>
                 <th>Notificador</th>
@@ -57,6 +58,7 @@
                     <td><?php echo e($value->id); ?></td>
                     <td><?php echo e($value->notificado->ci); ?></td>
                     <td><?php echo e($value->memorandum->tipo); ?></td>
+                    <td><?php echo e($value->acensos_decensos); ?></td>
                     <td><?php echo e($value->ubicacion_fisica); ?></td>
                     <td><?php echo e($value->fecha_asignacion); ?></td>
                     <td><?php echo e($value->notificador->ci); ?></td>

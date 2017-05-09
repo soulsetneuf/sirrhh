@@ -13,7 +13,7 @@ class MemorandumUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class MemorandumUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "path"=>"required|mimes:jpeg,bmp,png",
+            "numero_memorandum"=>"integer",
         ];
     }
 }

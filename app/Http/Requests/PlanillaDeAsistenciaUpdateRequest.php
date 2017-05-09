@@ -13,7 +13,7 @@ class PlanillaDeAsistenciaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class PlanillaDeAsistenciaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "path"=>"required|mimes:jpeg,bmp,png'",
+            "total_personal"=>"required|integer",
+            "descripcion"=>"required"
         ];
     }
 }

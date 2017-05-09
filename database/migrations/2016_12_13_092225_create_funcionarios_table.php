@@ -38,6 +38,11 @@ class CreateFuncionariosTable extends Migration
             $table->string('cor_ins');
             $table->bigInteger('num_cue');
             $table->string('ant_ext');
+            $table->string("cargo");
+
+            $table->integer('tipo_funcionario_id')->unsigned();
+            $table->foreign('tipo_funcionario_id')->references('id')->on('tipos_funcionarios') ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

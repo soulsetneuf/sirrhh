@@ -42,6 +42,7 @@
                 <th>#</th>
                 <th>Funcionario</th>
                 <th>Tipo de Memorandum</th>
+                <th>Acensos Decensos</th>
                 <th>Ubicacion Fisica</th>
                 <th>Fecha Asignacion</th>
                 <th>Notificador</th>
@@ -53,6 +54,7 @@
                     <td>{{ $value->id }}</td>
                     <td>{{ $value->notificado->ci }}</td>
                     <td>{{ $value->memorandum->tipo }}</td>
+                    <td>{{ $value->acensos_decensos }}</td>
                     <td>{{ $value->ubicacion_fisica }}</td>
                     <td>{{ $value->fecha_asignacion }}</td>
                     <td>{{ $value->notificador->ci }}</td>

@@ -20,7 +20,7 @@
 <div class="form-group">
     <div class="col-lg-6">
         {!! Form::label('CI') !!}
-        {!! Form::text('"ci"', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+        {!! Form::text('ci', null, ['class' => 'form-control' , 'required' => 'required']) !!}
     </div>
     <div class="col-lg-6">
         {!! Form::label('Sexo') !!}
@@ -34,7 +34,7 @@
     </div>
 
     <div class="col-lg-6">
-        {!! Form::label("Estado civil") !!}}
+        {!! Form::label("Estado civil") !!}
         {!! Form::select("est_civil",config("options.estado_civil"),null,["class"=>"form-control","required"=>"required"]) !!}
     </div>
 </div>

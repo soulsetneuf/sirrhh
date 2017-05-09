@@ -30,6 +30,7 @@ class CreateMemorandumTable extends Migration
                 $table->foreign('notificado_id')->references('id')->on('funcionarios') ->onDelete('cascade');
                 $table->string("lugar");
                 $table->string("motivo");
+                $table->string("acensos_decensos");
                 $table->timestamps();//created_at, updated_at
             });
     }

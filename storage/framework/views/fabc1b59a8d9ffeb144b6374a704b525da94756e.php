@@ -39,7 +39,7 @@
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a href="#" class="sidebar" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <div class="navbar-custom-menu">
@@ -176,7 +176,7 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?php echo e(asset('template/dist/img/user2-160x160.png')); ?>" class="img-rounded"
+                                <img src="<?php echo e(asset('template/dist/img/avatar5.png')); ?>" class="img-rounded"
                                      alt="User Image">
                                 <p>
                                     <?php if(Auth::check()): ?>
@@ -187,22 +187,8 @@
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="pull-left text-center">
-                                        <a href="https://www.minsalud.gob.bo/" title="Ministerio de salud" target="_blank">Ministerio</a>
-                                    </div>
-                                    <div class="pull-right text-center">
-                                        <a href="<?php echo e(url('/usuario/password')); ?>" title="Modificar contraseña">Contraseña</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="<?php echo e(url('/Agenda/home')); ?>" class="btn btn-default btn-flat">Agenda</a>
-                                </div>
                                 <div class="pull-right">
                                     <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" >
                                         <?php echo e(csrf_field()); ?>
@@ -228,20 +214,9 @@
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="<?php echo e(asset('template/dist/img/user2-160x160.png')); ?>" class="img-rounded" alt="User Image">
-
-                </div>
-                <div class="pull-left info ">
-                        <a href="#" class="large-text">
-                        <?php if(session()->has('institucion')): ?>
-                                <?php echo e(session('institucion')->inst_nombre); ?>
-
-                        <?php else: ?>
-                            Sin institución
-                        <?php endif; ?>
-                    </a>
-                </div>
+                <center>
+                    <img src="<?php echo e(asset('template/dist/img/Logo-Amdepo-2.gif')); ?>" width="150" height="150" class="img-rounded" alt="User Image">
+                </center>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">

@@ -13,7 +13,7 @@ class PersonaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class PersonaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"alpha",
+            "apellido_paterno"=>"alpha",
+            "apellido_materno"=>"alpha",
+            "telefono"=>"integer"
         ];
     }
 }

@@ -78,6 +78,11 @@ Route::group(['middleware' => 'auth'], function () {
         $municipio = \sisRRHH\Municipio::where("provincia_id",$id);
         return $municipio->pluck('nombre', 'id');
     });
+    Route::get('tipo_funcionario', function(){
+        $id = Input::get('option');
+        $funcionario = funcionario::find($id);
+        return $funcionario->funcionario->tipo;
+    });
 });
 
 /*

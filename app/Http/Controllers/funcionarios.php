@@ -63,67 +63,8 @@ class funcionarios extends Controller
      */
     public function store(Request $request)
     {
-       $messages=[
-            'ci.required'=>'El campo ci es obligatorio.',
-            'nom_com.required'=>'El campo Nombre Completo es obligatorio.'
-        ];
-        $this->validate($request,
-            [
-                'ci'=>'required',
-                'nom_com'=>'required',
-                'fec_nac'=>'required',
-                'pro_ocu'=>'required',
-                'pro'=>'required',
-                'ciu'=>'required',
-                'dir'=>'required',
-                'n_seg_soc'=>'alpha-num',
-                'tel_fij'=>'numeric',
-                'tel_cel'=>'required|numeric',
-                'num_lic'=>'alpha-num',
-                'cor_per'=>'required|email',
-                'cor_ins'=>'required|email',
-                'num_cue'=>'numeric',
-                'ant_ext'=>'required'
-            ],$messages);
-        //
-        $fun=new funcionario();
-
-        $fun->ci=$request->ci; 
-        $fun->nom_com=$request->nom_com;
-        $fun->sexo=$request->sex;
-        $fun->fec_nac=$request->fec_nac;
-        $fun->est_civ=$request->est_civ;
-        $fun->pro_ocu=$request->pro_ocu;
-        $fun->pais=$request->pais;
-        $fun->dep=$request->dep;
-        $fun->pro=$request->pro;
-        $fun->ciu=$request->ciu;
-        $fun->dir=$request->dir;
-        $fun->n_seg_soc=$request->n_seg_soc;
-        $fun->est_lab=$request->est_lab;
-        $fun->fec_ina=$request->fec_ina;
-        $fun->tel_fij=$request->tel_fij;
-        $fun->tel_cel=$request->tel_cel;
-        $fun->num_lic=$request->num_lic;
-        $fun->cat_lic=$request->cat_lic;
-        $fun->fec_fen_lic=$request->fec_fen_lic;
-        $fun->cor_per=$request->cor_per;
-        $fun->cor_ins=$request->cor_ins;
-        $fun->num_cue=$request->num_cue;
-        $fun->ant_ext=$request->ant_ext;
-
-        if($fun->save())
-        {
-            $rs = DB::table('funcionarios')->select(DB::raw('MAX(id) as id'))->first();
-            return redirect("funcionarios/");
-
-            return redirect("contratos/$rs->id/$request->nom_com/$request->ci")->with('errormsj','Datos Actualizados Correctamente.');
-        }
-        else
-        {
-            return back()->with('errormsj','Los Datos No se Guardaron.');
-        }
-         
+        funcionario::create($request->all());
+        return redirect($this->ruta_controlador);
     }
 
     /**
@@ -172,61 +113,8 @@ class funcionarios extends Controller
      */
     public function update(Request $request, $id)
     {
-        $messages=[
-            'ci.required'=>'El campo ci es obligatorio.',
-            'nom_com.required'=>'El campo Nombre Completo es obligatorio.'
-        ];
-        $this->validate($request,
-            [
-                'ci'=>'required',
-                'nom_com'=>'required',
-                'fec_nac'=>'required',
-                'pro_ocu'=>'required',
-                'pro'=>'required',
-                'ciu'=>'required',
-                'dir'=>'required',
-                'n_seg_soc'=>'alpha-num',
-                'tel_fij'=>'numeric',
-                'tel_cel'=>'required|numeric',
-                'num_lic'=>'alpha-num',
-                'cor_per'=>'required|email',
-                'cor_ins'=>'required|email',
-                'num_cue'=>'numeric',
-                'ant_ext'=>'required'
-            ],$messages);
-        //
-        $fun=funcionario::find($id);
-        $fun->ci=$request->ci; 
-        $fun->nom_com=$request->nom_com;
-        $fun->sexo=$request->sex;
-        $fun->fec_nac=$request->fec_nac;
-        $fun->est_civ=$request->est_civ;
-        $fun->pro_ocu=$request->pro_ocu;
-        $fun->pais=$request->pais;
-        $fun->dep=$request->dep;
-        $fun->pro=$request->pro;
-        $fun->ciu=$request->ciu;
-        $fun->dir=$request->dir;
-        $fun->n_seg_soc=$request->n_seg_soc;
-        $fun->est_lab=$request->est_lab;
-        $fun->fec_ina=$request->fec_ina;
-        $fun->tel_fij=$request->tel_fij;
-        $fun->tel_cel=$request->tel_cel;
-        $fun->num_lic=$request->num_lic;
-        $fun->cat_lic=$request->cat_lic;
-        $fun->fec_fen_lic=$request->fec_fen_lic;
-        $fun->cor_per=$request->cor_per;
-        $fun->cor_ins=$request->cor_ins;
-        $fun->num_cue=$request->num_cue;
-        $fun->ant_ext=$request->ant_ext;
-        if($fun->save())
-        {
-            return redirect("funcionarios/$id")->with('msj','Datos Actualizados Correctamente.');
-        }
-        else
-        {
-            return back()->with('errormsj','Los Datos No se Guardaron.');
-        }
+        funcionario::find($id)->fill($request->all())->save();
+        return redirect($this->ruta_controlador);
     }
 
     /**

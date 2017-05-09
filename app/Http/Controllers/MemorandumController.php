@@ -4,6 +4,7 @@ namespace sisRRHH\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use sisRRHH\Http\Requests\MemorandumUpdateRequest;
 use sisRRHH\Memorandum;
 use sisRRHH\Http\Requests\MemorandumCreateRequest;
 use sisRRHH\Http\Requests\Memorandum2CreateRequest;
@@ -205,7 +206,7 @@ class MemorandumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MemorandumUpdateRequest $request, $id)
     {
         Memorandum::find($id)->fill($request->all())->save();
         return redirect($this->ruta_controlador);

@@ -54,6 +54,7 @@
                                     <th>Nombre completo</th>
                                     <th>Tipo de archivo</th>
                                     <th>Tipo de promocion</th>
+                                    <td>Ascensos/Descensos</td>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
                                     <th>Dias trabajados</th>
@@ -68,6 +69,7 @@
                                         <td>{{ $value->funcionario->nombre_completo }}</td>
                                         <td>{{ "Contrato" }}</td>
                                         <td>{{ $value->tipo_promocion }}</td>
+                                        <td>{{ $value->acensos_decensos }}</td>
                                         <td>{{ $value->fecha_inicio }}</td>
                                         <td>{{ $value->fecha_fin }}</td>
                                         <td>
@@ -83,6 +85,7 @@
                                         <td>{{ $value->notificado->nombre_completo }}</td>
                                         <td>{{ "Memorandum" }}</td>
                                         <td>{{ $value->memorandum->tipo }}</td>
+                                        <td>{{ $value->acensos_decensos }}</td>
                                         <td>{{ $value->fecha_asignacion }}</td>
                                         <td>{{ $value->fecha_designacion }}</td>
                                         <td>

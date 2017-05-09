@@ -10,6 +10,7 @@
             Error al guardar los Datos.
         </div>
     @endif
+    @include('Error.error')
     {!! Form::model($value,['route' => [$ruta_controlador.'.update',$value->id], 'method' => 'put',"files"=>"true"]) !!}
 
     @include($ruta_vista.'.form')
